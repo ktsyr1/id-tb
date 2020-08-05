@@ -46,7 +46,7 @@ export default class Time extends Component {
                             )
                         })}
                     </div>
-                        <table>
+                        <table className='fullw'>
                             <thead>
                                  <tr>
                                     <th>اليوم</th>
