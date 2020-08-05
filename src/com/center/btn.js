@@ -1,5 +1,9 @@
 import React, { Component, Fragment } from 'react'
-// import './name.sass'
+import passport from '../../svg/Icon awesome-passport.svg'
+// import accessible_icon from '../../svg'
+import insurance from '../../svg/Icon map-insurance-agency.svg'
+import metro from '../../svg/Icon metro-profile.svg'
+
 export default class Btn extends Component {
     state = {}
 
@@ -20,10 +24,11 @@ export default class Btn extends Component {
     render() {
         const x = this.state
         return (
-            <div>
+            <Fragment>
                 {/* الجنسية */}
                 <div className='itr __'>
-                    <p>الجنسية : </p>
+                    <img className='svg' src={passport} alt={"passport"}/>
+                    <p>الجنسية</p>
 
                     {this.props.data && this.props.data.map(i =>
                         <Fragment key={i.Nationality}>
@@ -36,22 +41,27 @@ export default class Btn extends Component {
                             }}>{i.Nationality}</button></Fragment>
                     )}
                 </div>
-                <table>
-                    <thead>
+                <table className='gn'>
+                    <thead className='itr __'>
+                        <tr>
+                            <img className='svg' src={metro} alt={"metro"}/>
+                            <img className='svg' src={insurance} alt={"insurance"}/>
+
+                        </tr>
                         <tr>
                             <td>الاوراق الثبوتية</td>
-                            <td>{x.document}</td> 
+                            <td>التامين</td> 
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='itr __'>
                         <tr>
-                            <td>التامين</td>
                             <td>{x.Insurance}</td>
+                            <td>{x.document}</td>
                         </tr>
                     </tbody>
                     
                 </table>
-            </div>
+            </Fragment>
         )
     }
 }

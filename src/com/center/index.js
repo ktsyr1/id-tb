@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios' 
 import {Link} from 'react-router-dom' 
+// svg 
+import accessible_icon from '../../svg/awesome-accessible-icon.svg'
+import map_pin from '../../svg/feather-map-pin.svg'
+
 
 import './center.sass'
 import {centers} from '../../models/config'
@@ -23,10 +27,10 @@ export default class Index extends Component {
             return(document.querySelector('.needs').style.color = '#f00')
         }
     }
-    text = () => console.log(this.state.data)
+    text = () => console.log(accessible_icon)
     render() {
         return (
-            <div onLoad={this.text}> 
+            <div onClick={this.text}> 
                 {this.state.data.map(x =>
                     <div key={x._id} className='card' >
                         <Link to={`/${x._id}`}  >
@@ -35,11 +39,11 @@ export default class Index extends Component {
                             </div>
                             <div className='footer'>
                                 <div className='city __'>
-                                    <span className="material-icons">location_on</span>
+                                    <img className='svg' src={map_pin} alt={"map_pin"}/>
                                     <p>{x.address.city}</p>
                                 </div>
                                 <div className='__' id={x.special_needs.toString()}>
-                                    <span className="material-icons">accessible_forward</span>
+                                    <img className='svg' src={accessible_icon} alt={"accessible_icon"}/>
                                     <p>ذوي الاحتياجات الخاصة</p>
 
                                 </div>

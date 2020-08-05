@@ -1,6 +1,5 @@
 import React from 'react';  
-import './App.css';
-import './icon/icon.css';
+import './App.css'; 
 import { BrowserRouter,Route, Switch } from 'react-router-dom'
 import Index from "./com/center/index";
 import Nav from "./com/theme/nav";
