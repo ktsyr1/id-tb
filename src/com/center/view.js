@@ -41,7 +41,7 @@ export default class View_center extends Component {
                         </div>
                         <div className='itr __'>
                             <img className='svg' src={accessible_icon} alt={"accessible_icon"}/>
-                            <p>الاحتياجات الخاصة</p>
+                            <p>مدخل ذوي الاحتياجات الخاصة</p>
                             <p>{x && x.special_needs}</p>
                         </div>
                     </div>
