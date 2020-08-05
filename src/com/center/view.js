@@ -3,7 +3,7 @@ import {center,tables} from '../../models/config'
 import axios from 'axios'
 import Btn from './btn'
 import Time from './time'
-// import './name.sass'
+import Iframe from 'react-iframe'
 export default class View_center extends Component {
     state = {
          center:{"address":{"city":"برلياس","address":"الطريق العام","map":"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2698.4290996442296!2d35.91694696841773!3d33.79089625346246!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518ccaa9775183b%3A0xedd5096c83c06643!2zMzPCsDQ3JzMwLjIiTiAzNcKwNTUnMDAuMyJF!5e1!3m2!1sar!2slb!4v1575491706110!5m2!1sar!2slb"},"_id":"5f27ae7cab2b404c148e4eaf","name":"العودة","wtan":[{"Insurance":["دفتر العائلة"],"document":["هوية"],"_id":"5f27ae7cab2b404c148e4eb0","Nationality":"سوري"},{"Insurance":["هوية"],"document":["بطاقة اليونسيف"],"_id":"5f27ae7cab2b404c148e4eb1","Nationality":"فلسطيني"},{"Insurance":["لا يوجد"],"document":["هوية"],"_id":"5f27ae7cab2b404c148e4eb2","Nationality":"لبناني"}],"tele_phone":12345678,"special_needs":true,"__v":0}   
@@ -47,7 +47,8 @@ export default class View_center extends Component {
                         <p>{x && x.address && x.address.address}</p>
                         {/* الخريطة */}
                         {/* <p></p> */}
-                        <iframe className="b-r" src={x && x.address && x.address.map}></iframe>
+                        <Iframe url= {x && x.address && x.address.map}
+                            className="b-r" />
                     </div>
 
                 </div>
