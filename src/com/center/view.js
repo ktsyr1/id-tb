@@ -7,7 +7,7 @@ import Iframe from 'react-iframe'
 // icon 
 import call from '../../svg/Icon ionic-ios-call.svg'
 import accessible_icon from '../../svg/Icon awesome-city.svg'
-import city from '../../svg/Icon awesome-city.png'
+import city from '../../svg/Icon awesome-city.svg'
 import maps from '../../svg/feather-map-pin.svg'
 import map from '../../svg/Icon awesome-map-marked-alt.svg'
 
