@@ -16,7 +16,7 @@ export default class Index extends Component {
 
     componentDidMount() {
         axios.get(centers)
-            .then(res => this.setState({ data: res.data }))
+            // .then(res => this.setState({ data: res.data }))
             
     }
     ic(s){ 

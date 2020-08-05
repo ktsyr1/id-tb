@@ -1,4 +1,6 @@
 import React, { Component,Fragment } from 'react'  
+//icon 
+import star from '../../svg/Icon feather-star.svg'
 
 export default class Time extends Component {
     state = {
@@ -23,10 +25,10 @@ export default class Time extends Component {
         const x = this.props.data
         const s = this.state.time
         return (
-            <div > 
-                <div className='itr'>
-                    <span>الاختصاصات : </span>
-                    <div className='__'>
+            <Fragment > 
+                <div className='itr __ ff'>
+                    <img className='svg' src={star} alt={"star"}/>
+                    <p>الاختصاصات</p>
                         {x && this.props.data.map(i => {
                             return(
                                 <Fragment key={i._id} >
@@ -44,7 +46,6 @@ export default class Time extends Component {
                             )
                         })}
                     </div>
-                    <div>
                         <table>
                             <thead>
                                  <tr>
@@ -68,9 +69,7 @@ export default class Time extends Component {
                                 })}
                             </tbody>
                         </table> 
-                    </div>
-                </div>
-            </div>
+            </Fragment>
         )
     }
 }

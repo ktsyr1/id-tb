@@ -6,7 +6,10 @@ import Time from './time'
 import Iframe from 'react-iframe'
 // icon 
 import call from '../../svg/Icon ionic-ios-call.svg'
-import accessible_icon from '../../svg/awesome-accessible-icon.svg'
+import accessible_icon from '../../svg/Icon awesome-city.svg'
+import city from '../../svg/Icon awesome-city.png'
+import maps from '../../svg/feather-map-pin.svg'
+import map from '../../svg/Icon awesome-map-marked-alt.svg'
 
 
 export default class View_center extends Component {
@@ -16,9 +19,9 @@ export default class View_center extends Component {
         }
     componentDidMount() {
         axios.get(center(this.props.match.params.id))
-            .then(res => this.setState({ center: res.data }))
+            // .then(res => this.setState({ center: res.data }))
         axios.get(tables(this.props.match.params.id))
-                .then(res => this.setState({ tables: res.data }))
+                // .then(res => this.setState({ tables: res.data }))
     }
     text = () => console.log(this.state)
 
@@ -41,7 +44,7 @@ export default class View_center extends Component {
                         </div>
                         <div className='itr __'>
                             <img className='svg' src={accessible_icon} alt={"accessible_icon"}/>
-                            <p>مدخل ذوي الاحتياجات الخاصة</p>
+                            <p className='p10'>مدخل ذوي الاحتياجات الخاصة </p>
                             <p>{x && x.special_needs}</p>
                         </div>
                     </div>
@@ -49,15 +52,22 @@ export default class View_center extends Component {
                         <Time data={this.state.tables} />
                     </div>   
                     <div className='box'>
-                        
-                         {/* المدينة  */}
-                        <p>{x && x.address && x.address.city}</p>
-                        {/* العنون */}
-                        <p>{x && x.address && x.address.address}</p>
-                        {/* الخريطة */}
-                        {/* <p></p> */}
-                        <Iframe url= {x && x.address && x.address.map}
-                            className="b-r" />
+                        <div className='itr __'>
+                            <img className='svg' src={city} alt={"city"}/>
+                            <p className='p10'>المدينة</p>
+                            <p>{x && x.address && x.address.city}</p>
+                        </div>
+                        <div className='itr __'>
+                            <img className='svg' src={maps} alt={"maps"}/>
+                            <p className='p10'>  العنوان  </p>
+                            <p>{x && x.address && x.address.address}</p>
+                        </div>
+                        <div className='itr __'>
+                            <img className='svg' src={map} alt={"map"}/>
+                            <p className='p10'>  العنوان على الخريطة  </p>
+                        </div>
+                        <Iframe url= {x && x.address && x.address.map} className="b-r" />
+
                     </div>
 
             </div>

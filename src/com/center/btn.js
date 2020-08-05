@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
+//icon
 import passport from '../../svg/Icon awesome-passport.svg'
-// import accessible_icon from '../../svg'
 import insurance from '../../svg/Icon map-insurance-agency.svg'
 import metro from '../../svg/Icon metro-profile.svg'
 
@@ -25,8 +25,7 @@ export default class Btn extends Component {
         const x = this.state
         return (
             <Fragment>
-                {/* الجنسية */}
-                <div className='itr __'>
+                <div className='itr __ ff'>
                     <img className='svg' src={passport} alt={"passport"}/>
                     <p>الجنسية</p>
 
