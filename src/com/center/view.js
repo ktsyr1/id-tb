@@ -47,7 +47,7 @@ export default class View_center extends Component {
                         <p>{x && x.address && x.address.address}</p>
                         {/* الخريطة */}
                         {/* <p></p> */}
-                        <iframe className="b-r" src={x && x.address && x.address.map}></iframe>
+                        <form className="b-r" src={x && x.address && x.address.map}></form>
                     </div>
 
                 </div>
