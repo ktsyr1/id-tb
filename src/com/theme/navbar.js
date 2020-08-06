@@ -12,7 +12,6 @@ export default class Navbar extends Component{
                    <img className='svg' src={Back} alt={"Back"}/>
                </NavLink>
                <img className='svg' style={{width: "5px"}} src={item} alt={"item"}/>
-
             </nav>
         )
     }

@@ -24,7 +24,7 @@ export default class Index extends Component {
             return(document.querySelector('.needs').style.color = '#f00')
         }
     }
-    text = () => console.log(this.state.data ,centers)
+    text = () => console.log(this.state.data)
     render() {
         return (
             <div onClick={this.text}> 
