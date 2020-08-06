@@ -1,5 +1,4 @@
 import React, { Component } from 'react'   
-import {NavLink} from 'react-router-dom'
 import menu from '../../svg/Icon feather-menu.svg'
 import search from '../../svg/Icon awesome-search.svg'
 import logo from '../../svg/logo.svg'
