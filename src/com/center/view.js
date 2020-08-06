@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import {center,tables} from '../../models/config'
 import axios from 'axios'
+// com
 import Btn from './btn'
 import Time from './time'
 import Iframe from 'react-iframe'
+import Navbar from '../theme/navbar'
 // icon 
 import call from '../../svg/Icon ionic-ios-call.svg'
 import accessible_icon from '../../svg/Icon awesome-city.svg'
@@ -11,7 +13,7 @@ import city from '../../svg/Icon awesome-city.svg'
 import maps from '../../svg/feather-map-pin.svg'
 import map from '../../svg/Icon awesome-map-marked-alt.svg'
 
-
+//
 export default class View_center extends Component {
     state = {
          center:{"address":{"city":"برلياس","address":"الطريق العام","map":"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2698.4290996442296!2d35.91694696841773!3d33.79089625346246!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518ccaa9775183b%3A0xedd5096c83c06643!2zMzPCsDQ3JzMwLjIiTiAzNcKwNTUnMDAuMyJF!5e1!3m2!1sar!2slb!4v1575491706110!5m2!1sar!2slb"},"_id":"5f27ae7cab2b404c148e4eaf","name":"العودة","wtan":[{"Insurance":["دفتر العائلة"],"document":["هوية"],"_id":"5f27ae7cab2b404c148e4eb0","Nationality":"سوري"},{"Insurance":["هوية"],"document":["بطاقة اليونسيف"],"_id":"5f27ae7cab2b404c148e4eb1","Nationality":"فلسطيني"},{"Insurance":["لا يوجد"],"document":["هوية"],"_id":"5f27ae7cab2b404c148e4eb2","Nationality":"لبناني"}],"tele_phone":12345678,"special_needs":true,"__v":0}   
@@ -29,7 +31,7 @@ export default class View_center extends Component {
         const x = this.state.center
         return (
             <div className='view' >
-                    {/* الاسم */}
+                    <Navbar />
                     <div className='box '>
                         <p className='itr'>{x &&x.name}</p>
                     </div>

@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import accessible_icon from '../../svg/awesome-accessible-icon.svg'
 import map_pin from '../../svg/feather-map-pin.svg'
 
-
+import Nav from '../theme/nav'
 import './center.sass'
 import {centers} from '../../models/config'
 export default class Index extends Component {
@@ -31,6 +31,7 @@ export default class Index extends Component {
     render() {
         return (
             <div onClick={this.text}> 
+                <Nav />
                 {this.state.data.map(x =>
                     <div key={x._id} className='card' >
                         <Link to={`/${x._id}`}  >
