@@ -11,12 +11,12 @@ import {centers} from '../../models/config'
 export default class Index extends Component {
     state = {
         // data: []
-        data:[{"address":{"city":"برلياس"},"_id":"5f27ae7cab2b404c148e4eaf","name":"العودة","wtan":[{"Nationality":"سوري"},{"Nationality":"فلسطيني"},{"Nationality":"لبناني"}],"special_needs":true},{"address":{"city":"برلياس"},"_id":"5f274f3aab2b404c148e4eab","name":"التظامن","wtan":[{"Nationality":"سوري"},{"Nationality":"فلسطيني"},{"Nationality":"لبناني"}],"special_needs":false}]
+        // data:[{"address":{"city":"برلياس"},"_id":"5f27ae7cab2b404c148e4eaf","name":"العودة","wtan":[{"Nationality":"سوري"},{"Nationality":"فلسطيني"},{"Nationality":"لبناني"}],"special_needs":true},{"address":{"city":"برلياس"},"_id":"5f274f3aab2b404c148e4eab","name":"التظامن","wtan":[{"Nationality":"سوري"},{"Nationality":"فلسطيني"},{"Nationality":"لبناني"}],"special_needs":false}]
     }
 
     componentDidMount() {
         axios.get(centers)
-            // .then(res => this.setState({ data: res.data }))
+            .then(res => this.setState({ data: res.data }))
             
     }
     ic(s){ 
