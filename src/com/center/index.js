@@ -9,10 +9,7 @@ import Nav from '../theme/nav'
 import './center.sass'
 import {centers} from '../../models/config'
 export default class Index extends Component {
-    state = {
-        // data: []
-        // data:[{"address":{"city":"برلياس"},"_id":"5f27ae7cab2b404c148e4eaf","name":"العودة","wtan":[{"Nationality":"سوري"},{"Nationality":"فلسطيني"},{"Nationality":"لبناني"}],"special_needs":true},{"address":{"city":"برلياس"},"_id":"5f274f3aab2b404c148e4eab","name":"التظامن","wtan":[{"Nationality":"سوري"},{"Nationality":"فلسطيني"},{"Nationality":"لبناني"}],"special_needs":false}]
-    }
+    state = {}
 
     componentDidMount() {
         axios.get(centers)
@@ -27,12 +24,12 @@ export default class Index extends Component {
             return(document.querySelector('.needs').style.color = '#f00')
         }
     }
-    text = () => console.log(accessible_icon)
+    text = () => console.log(this.state.data ,centers)
     render() {
         return (
             <div onClick={this.text}> 
                 <Nav />
-                {this.state.data.map(x =>
+                {this.state.data && this.state.data.map(x =>
                     <div key={x._id} className='card' >
                         <Link to={`/${x._id}`}  >
                             <div className='title'>
