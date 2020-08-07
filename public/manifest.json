@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "الدليل الطبي",
+  "name": "دليل المراكز الطبية في لبنان",
   "icons": [
     {
       "src": "favicon.ico",
