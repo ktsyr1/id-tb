@@ -54,8 +54,8 @@ export default class Btn extends Component {
                     </thead>
                     <tbody className='itr __'>
                         <tr>
-                            <td>{x.Insurance}</td>
                             <td>{x.document}</td>
+                            <td>{x.Insurance}</td>
                         </tr>
                     </tbody>
                     
