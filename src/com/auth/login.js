@@ -20,7 +20,7 @@ export default class Login extends Component{
                         <input type="email" name="mail" placeholder='الايميل' onChange={this.i_email}/>
                         <input type="password" name="password" placeholder='كلمة السر' onChange={this.i_password}/>
                     </label>
-                        <input type="submit" value="تسجيل " onClick={this.text}/>
+                        <div id="submit" value=" " onClick={this.text}>تسجيل</div>
                     <p>اذا كان لديك حساب قم <span onClick={this.signup} > بتسجيل الدخول </span></p> 
 
                 </form>
