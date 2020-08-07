@@ -29,7 +29,7 @@ export default class Nav extends Component{
                         <Itme url={'#'} icon={hospital2} name={'المشافي'} />
                         <Itme url={'#'} icon={call} name={'الارقام الضرورية'} />
                         <Itme url={'#'} icon={help} name={'حول التطبيق'} />
-                        <Itme url={'#'} icon={login} name={'تسجيل دخول'} /> 
+                        <Itme url={'/auth'} icon={login} name={'تسجيل دخول'} /> 
                           
                     </div>
                 </div>

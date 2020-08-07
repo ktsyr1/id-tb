@@ -1,0 +1,26 @@
+@import ../center/center
+form.login ,form.signup
+    width: 300px
+    padding: 10px
+    margin: 5px auto    
+    @extend .sh , .b-r 
+    label 
+        display: grid
+    input 
+        padding: 10px
+        margin: 5px
+        border: 0.5px solid #2680eb
+        border-radius: 20px
+    input[type="submit"]
+        @extend input
+        width: 95%
+        background-color: #2680eb
+        color: #fff
+    span 
+        color: #2680eb
+    p 
+        padding: 10px
+#login_box , #signup_box
+    margin: 100px auto
+#auth #signup_box
+    display: none

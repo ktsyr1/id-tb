@@ -31,7 +31,7 @@ export default class Index extends Component {
                 <Nav />
                 {this.state.data && this.state.data.map(x =>
                     <div key={x._id} className='card' >
-                        <Link to={`/${x._id}`}  >
+                        <Link to={`/center/${x._id}`}  >
                             <div className='title'>
                                 <h3>{x.name}</h3>
                             </div>
