@@ -6,7 +6,7 @@ export default class ItmeNav extends Component{
     }
     render(){
         return(
-            <Link to={this.props.url} onClick={this.menu_close}>
+            <Link to={this.props.url} >
                 <img className='svg' src={this.props.icon} alt={this.props.icon} />
                 <p>{this.props.name}</p>
             </Link>

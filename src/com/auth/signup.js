@@ -13,7 +13,7 @@ export default class Signup extends Component{
     
     render(){
         return(
-                <form className='signup' >
+                <form className='signup' onClick={this.text} >
                     <p>تسجيل </p>
                     <label>
                         <input type="text" name="name" placeholder='الاسم' onChange={this.i_name}/>
@@ -21,8 +21,8 @@ export default class Signup extends Component{
                         <input type="email" name="email" placeholder='الايميل' onChange={this.i_email}/>
                         <input type="password" name="password" placeholder='كلمة السر' onChange={this.i_password}/>
                     </label>
-                    <div id="submit" onClick={this.text}>تسجيل الدخول</div>
-                    <p>اذا كان لديك حساب قم <span onClick={this.login} >بتسجيل الدخول</span></p> 
+                    <div id="submit" onClick={this.text}>تسجيل </div>
+                    <p>اذا كان لديك حساب قم <span onClick={this.login} >بتسجيل </span></p> 
                 </form>
         )
     }

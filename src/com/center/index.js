@@ -27,7 +27,7 @@ export default class Index extends Component {
     text = () => console.log(this.state.data)
     render() {
         return (
-            <div onClick={this.text}> 
+            <div> 
                 <Nav />
                 {this.state.data && this.state.data.map(x =>
                     <div key={x._id} className='card' >
