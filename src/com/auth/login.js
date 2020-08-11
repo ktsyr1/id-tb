@@ -51,10 +51,8 @@ export default class Login extends Component{
                     <input type="email" name="mail" placeholder='الايميل' onChange={this.i_email}/>
                     <input type="password" name="password" placeholder='كلمة السر' onChange={this.i_password}/>
                 </label>
-                    <input id="submit"  type="submit" value=" بتسجيل الدخول " onClick={this.login }/>
+                    <input id="submit"  type="submit" onClick={this.login }  value=" بتسجيل الدخول "/>
                 <p>اذا لم يكان لديك حساب قم <span onClick={this.signup} > بتسجيل  </span></p> 
-                {/* {this.state.password}<br />
-                {this.state.mail} */}
             </form>
         )
     }
