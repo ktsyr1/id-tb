@@ -26,9 +26,11 @@ export default class Time extends Component {
         const s = this.state.time
         return (
             <Fragment > 
-                <div className='itr __ ff'>
-                    <img className='svg' src={star} alt={"star"}/>
-                    <p>الاختصاصات</p>
+                <div className='itr ff'>
+                    <div className='__'>
+                        <img className='svg' src={star} alt={"star"}/>
+                        <p>الاختصاصات</p>
+                    </div> 
                         {x && this.props.data.map(i => {
                             return(
                                 <Fragment key={i._id} >
@@ -50,6 +52,7 @@ export default class Time extends Component {
                             <thead>
                                  <tr>
                                     <th>اليوم</th>
+                                    <th>الطبيب</th>
                                     <th>من</th>
                                     <th>الى</th>
                                 </tr>
@@ -61,6 +64,7 @@ export default class Time extends Component {
                                         <Fragment key={g.tody}>
                                             <tr>
                                                 <td>{g.tody}</td>
+                                                <td>{g.doctor}</td>
                                                 <td>{g.start}</td>
                                                 <td>{g.end}</td>
                                             </tr>

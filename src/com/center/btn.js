@@ -25,10 +25,11 @@ export default class Btn extends Component {
         const x = this.state
         return (
             <Fragment>
-                <div className='itr __ ff'>
-                    <img className='svg' src={passport} alt={"passport"}/>
-                    <p>الجنسية</p>
-
+                <div className='itr ff'>
+                    <div className='__'>
+                        <img className='svg' src={passport} alt={"passport"}/>
+                        <p>الجنسية</p>
+                    </div> 
                     {this.props.data && this.props.data.map(i =>
                         <Fragment key={i.Nationality}>
                             <button className='btn' id={i.Nationality} onClick={() => {

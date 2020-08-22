@@ -12,6 +12,7 @@ import accessible_icon from '../../svg/Icon awesome-city.svg'
 import city from '../../svg/Icon awesome-city.svg'
 import maps from '../../svg/feather-map-pin.svg'
 import map from '../../svg/Icon awesome-map-marked-alt.svg'
+import Edit from './itme'
 
 //
 export default class View_center extends Component {
@@ -22,13 +23,14 @@ export default class View_center extends Component {
         axios.get(tables(this.props.match.params.id))
                 .then(res => this.setState({ tables: res.data }))
     }
-    text = () => console.log(this.state)
+    // text = () => console.log(this.state.tables)
 
     render() {
         const x = this.state.center
         return (
-            <div className='view' >
+            <div className='view' onClick={this.text} >
                     <Navbar />
+                    <Edit/>
                     <div className='box '>
                         <p className='itr'>{x &&x.name}</p>
                     </div>

@@ -16,15 +16,15 @@ export default class Index extends Component {
             .then(res => this.setState({ data: res.data }))
             
     }
-    ic(s){ 
-        if(s === true){
-            return console.log(s);
-        }
-        if (s === false){
-            return(document.querySelector('.needs').style.color = '#f00')
-        }
-    }
-    text = () => console.log(this.state.data)
+    // ic(s){ 
+    //     if(s === true){
+    //         return console.log(s);
+    //     }
+    //     if (s === false){
+    //         return(document.querySelector('.needs').style.color = '#f00')
+    //     }
+    // }
+    // text = () => console.log(this.state.data)
     render() {
         return (
             <div> 

@@ -5,13 +5,18 @@ import Back from '../../svg/Back.svg'
 import item from '../../svg/menu_item.svg'
 import './nav.sass'
 export default class Navbar extends Component{ 
+    
+    open_Popup=() => { 
+        document.getElementById('Popup').style.display = 'flex'
+    } 
     render(){
+        
         return(
             <nav className='navbar '>
                <NavLink to='/'>
                    <img className='svg' src={Back} alt={"Back"}/>
                </NavLink>
-               <img className='svg' style={{width: "5px"}} src={item} alt={"item"}/>
+               <img className='svg' style={{width: "5px"}} src={item} alt={"item"} onClick={()=>document.getElementById('Popup').style.display = 'flex'} /> 
             </nav>
         )
     }

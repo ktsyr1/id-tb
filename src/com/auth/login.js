@@ -34,6 +34,8 @@ export default class Login extends Component{
             this.setState({login__:true})
             window.location.replace('/')
         }
+        console.log(this.state);
+        
     }
     i_email=(event)=> this.setState({mail:event.target.value});  
     i_password=(event)=> this.setState({password:event.target.value});  

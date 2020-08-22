@@ -50,7 +50,11 @@ export default class Nav extends Component{
         return(
             <nav className='nav'>
                 <div className='menu' >
-                    <img className='svg' src={menu} alt={"menu"}  onClick={this.menu_close} />
+                    <div className='__'>
+                        <img className='svg' src={menu} alt={"menu"}  onClick={this.menu_close} />
+                        <p className='p_'>{localStorage.getItem('username')}@</p>
+                    </div>
+                    
                     <div>
                         <Itme url={'#'} icon={home} name={'الرئيسية'} />
                         <Itme url={'#'} icon={hospital} name={'المراكز الطبية'} />
