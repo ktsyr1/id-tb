@@ -10,7 +10,9 @@ export default class Login extends Component{
         this.login = this.login.bind(this)
     }
     
-    componentDidMount(){
+    componentDidMount(){ 
+        console.log(this.state);
+        
     }
     text = () => console.log(this.state)
     signup = () => {
@@ -24,36 +26,41 @@ export default class Login extends Component{
         },
         url = config.login
         axios.post(url, _data)
-            .then(res => this.setState({
-                token:res.data.token,
-                username:res.data.username
-            }))
-        localStorage.setItem('token', this.state &&this.state.token );
-        localStorage.setItem('username', this.state && this.state.username);
-        if (localStorage.getItem('token').length>=10){
-            this.setState({login__:true})
-            window.location.replace('/')
-        }
-        console.log(this.state);
-        
-    }
+            .then(res => {
+                this.setState({
+                    token:res.data.token,
+                    username:res.data.username
+                })  
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('username', res.data.username);
+            })
+            //  document.querySelector('.login #submit').setAttribute('defaultValue','تاكيد تسجيل الدخول'),
+        } 
     i_email=(event)=> this.setState({mail:event.target.value});  
     i_password=(event)=> this.setState({password:event.target.value});  
 
     render(){
-        let ss
+        if (localStorage.getItem("token")){
+            if (localStorage.getItem("token")<10){
+                localStorage.setItem('token',undefined)
+            } else if (localStorage.getItem('token').length>=10){
+                this.setState({login__:true})
+                window.location.replace('/')
+            }
+        }
+        let ss = <p>تسجيل الدخول</p>
         if (this.state.login__  === true){
             ss= <div> تم تسجيل الدخول </div>
-        }
+        } 
+        
         return(
-            <form className='login'>
-                <p>تسجيل الدخول</p>
+            <form className='login' onClick={this.text}> 
                 {ss}
                 <label>
                     <input type="email" name="mail" placeholder='الايميل' onChange={this.i_email}/>
                     <input type="password" name="password" placeholder='كلمة السر' onChange={this.i_password}/>
                 </label>
-                    <input id="submit"  type="submit" onClick={this.login }  value=" بتسجيل الدخول "/>
+                    <input id="submit"  type="submit" onClick={this.login &&  this.login}  defaultValue=" بتسجيل الدخول "/>
                 <p>اذا لم يكان لديك حساب قم <span onClick={this.signup} > بتسجيل  </span></p> 
             </form>
         )

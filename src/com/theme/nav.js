@@ -34,19 +34,23 @@ export default class Nav extends Component{
     }
     menu_close(){
         document.querySelector('.menu').style.display = 'none'
-    }
-    clear () {
-        localStorage.removeItem('username');
-        window.location.reload()
-      }
+    } 
     render(){
         let _login
         if (this.state.login_s  === true){
-            _login = <Itme url={'/#'} icon={logout_icon} name={'تسجيل خروج'}  onClick ={this.clear}/>  
+            _login = 
+            < div className='a' onClick ={()=>{
+                localStorage.setItem('username',undefined)
+                localStorage.setItem('token',undefined)
+                window.location.reload(false)
+                }}>
+                <img className='svg' src={logout_icon} alt={logout_icon} />
+                <p>تسجيل خروج</p>
+            </div>
+             
         }else{
             _login = <Itme url={'/auth'} icon={login} name={'تسجيل دخول'} />  
-        }
-
+        } 
         return(
             <nav className='nav'>
                 <div className='menu' >

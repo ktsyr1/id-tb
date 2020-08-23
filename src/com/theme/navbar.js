@@ -1,5 +1,5 @@
 import React, { Component } from 'react'   
-import {NavLink} from 'react-router-dom'
+// import {NavLink} from 'react-router-dom'
 // icon 
 import Back from '../../svg/Back.svg'
 import item from '../../svg/menu_item.svg'
@@ -13,9 +13,9 @@ export default class Navbar extends Component{
         
         return(
             <nav className='navbar '>
-               <NavLink to='/'>
+               <div onClick={()=>window.history.back()}>
                    <img className='svg' src={Back} alt={"Back"}/>
-               </NavLink>
+               </div>
                <img className='svg' style={{width: "5px"}} src={item} alt={"item"} onClick={()=>document.getElementById('Popup').style.display = 'flex'} /> 
             </nav>
         )
