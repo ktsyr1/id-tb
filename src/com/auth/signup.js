@@ -38,23 +38,33 @@ export default class Signup extends Component{
             })
     }
     render(){
-        
         if (localStorage.getItem("token")){
-            if (localStorage.getItem("token")<10){
-                localStorage.setItem('token',undefined)
-            } else if (localStorage.getItem('token').length>=10){
+            if (localStorage.getItem("token").length> 10){
+                window.location.assign('/') 
                 this.setState({login__:true})
-                window.history.back()
-            }
+            }            
         }
+        
         return(
                 <form className='signup' onClick={this.text} >
                     <p>تسجيل </p>
                     <label>
-                        <input type="text" name="name" placeholder='الاسم' onChange={this.i_name}/>
-                        <input type="text" name="username" placeholder='اسم المستخدم' onChange={this.i_username}/>
-                        <input type="email" name="email" placeholder='الايميل' onChange={this.i_email}/>
-                        <input type="password" name="password" placeholder='كلمة السر' onChange={this.i_password}/>
+                        <div>
+                            <p>الاسم</p>
+                            <input type="text" name="name"  onChange={this.i_name}/>
+                        </div>
+                        <div>
+                            <p>اسم المستخدم</p>
+                            <input type="text" name="username" onChange={this.i_username}/>
+                        </div>
+                        <div>
+                            <p>الايميل</p>
+                            <input type="email" name="email" onChange={this.i_email}/>
+                        </div>
+                        <div>
+                            <p>كلمة السر</p>
+                            <input type="password" name="password"   onChange={this.i_password}/>
+                        </div>
                     </label>
                     <input id="submit"  type='submit' onClick={this.signup} defaultValue='تسجيل' />
                     <p>اذا كان لديك حساب قم <span onClick={this.login} >بتسجيل الدخول</span></p> 

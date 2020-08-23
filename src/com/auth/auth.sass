@@ -6,11 +6,24 @@ form.login ,form.signup
     @extend .sh , .b-r 
     label 
         display: grid
-    input 
+        div
+            margin: 10px
+            p 
+                width: fit-content
+                margin: -13px 25px 0 0
+                z-index: 11
+                background-color: #fff
+                color: #2680eb
+                position: absolute
+                padding: 4px
+                border-radius: 5px 
+    input  
+        @extend .sh
         padding: 10px
         margin: 5px
         border: 0.5px solid #2680eb
         border-radius: 20px
+        width: 90%
     #submit
         @extend input
         width: 88%

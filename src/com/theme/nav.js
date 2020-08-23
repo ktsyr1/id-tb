@@ -36,7 +36,16 @@ export default class Nav extends Component{
         document.querySelector('.menu').style.display = 'none'
     } 
     render(){
-        let _login
+        let _login ,_name
+        if (localStorage.getItem("token")){
+            if (localStorage.getItem("token").length>10){
+                _name = <p className='p_'>{localStorage.getItem('name')}</p>
+            }else{
+            _name = <img className='svg' src={logo} alt={"logo"}/>
+           }  
+        }else{
+            _name = <img className='svg' src={logo} alt={"logo"}/>
+           } 
         if (this.state.login_s  === true){
             _login = 
             < div className='a' onClick ={()=>{
@@ -47,16 +56,15 @@ export default class Nav extends Component{
                 <img className='svg' src={logout_icon} alt={logout_icon} />
                 <p>تسجيل خروج</p>
             </div>
-             
+        
         }else{
             _login = <Itme url={'/auth'} icon={login} name={'تسجيل دخول'} />  
-        } 
+        }  
         return(
             <nav className='nav'>
                 <div className='menu' >
                     <div className='__'>
-                        <img className='svg' src={menu} alt={"menu"}  onClick={this.menu_close} />
-                        <p className='p_'>{localStorage.getItem('name')}</p>
+                        <img className='svg' src={menu} alt={"menu"}  onClick={this.menu_close} /> 
                     </div>
                     
                     <div>
@@ -70,7 +78,7 @@ export default class Nav extends Component{
                     </div>
                 </div>
                 <img className='svg' src={menu} alt={"menu"} onClick={this.menu_open} />
-                <img className='svg' src={logo} alt={"logo"}/>
+                {_name}
                 <img className='svg' src={search} alt={"search"}/>
             </nav>
         )

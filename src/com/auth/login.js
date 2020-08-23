@@ -9,11 +9,7 @@ export default class Login extends Component{
         }
         this.login = this.login.bind(this)
     }
-    
-    componentDidMount(){ 
-        console.log(this.state);
-        
-    }
+     
     text = () => console.log(this.state)
     signup = () => {
         document.getElementById('signup_box').style.display = 'block'
@@ -39,26 +35,29 @@ export default class Login extends Component{
     i_email=(event)=> this.setState({mail:event.target.value});  
     i_password=(event)=> this.setState({password:event.target.value});  
 
-    render(){
-        if (localStorage.getItem("token")){
-            if (localStorage.getItem("token")<10){
-                localStorage.setItem('token',undefined)
-            } else if (localStorage.getItem('token').length>=10){
-                this.setState({login__:true})
-                window.history.back()
-            }
-        }
+    render(){ 
         let ss = <p>تسجيل الدخول</p>
         if (this.state.login__  === true){
             ss= <div> تم تسجيل الدخول </div>
         } 
-        
+        if (localStorage.getItem("token")){
+            if (localStorage.getItem("token").length> 10){
+                window.location.assign('/') 
+                this.setState({login__:true})
+            }            
+        }
         return(
             <form className='login' onClick={this.text}> 
                 {ss}
                 <label>
-                    <input type="email" name="mail" placeholder='الايميل' onChange={this.i_email}/>
-                    <input type="password" name="password" placeholder='كلمة السر' onChange={this.i_password}/>
+                    <div>
+                        <p>البريد الإلكتروني</p>
+                        <input type="email" name="mail"  onChange={this.i_email}/> 
+                    </div>
+                    <div>
+                        <p>كلمة السر</p>
+                        <input type="password" name="password" onChange={this.i_password}/>
+                    </div>
                 </label>
                     <input id="submit"  type="submit" onClick={this.login &&  this.login}  defaultValue=" بتسجيل الدخول "/>
                 <p>اذا لم يكان لديك حساب قم <span onClick={this.signup} > بتسجيل  </span></p> 
