@@ -30,19 +30,23 @@ export default class Signup extends Component{
         },
         url = config.signup
         axios.post(url, _data)
-            .then(res => this.setState({
-                data:res.data,
-                // token:res.data.token,
-                // username:res.data.username
-            }))
-        localStorage.setItem('token', this.state &&this.state.token );
-        localStorage.setItem('username', this.state && this.state.username);
-        if (localStorage.getItem('token').length>=10){
-            this.setState({login__:true})
-            window.location.replace('/')
-        }
+            .then(res => {
+                this.setState({ data:res.data })
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('name', this.state && this.state.name );
+
+            })
     }
     render(){
+        
+        if (localStorage.getItem("token")){
+            if (localStorage.getItem("token")<10){
+                localStorage.setItem('token',undefined)
+            } else if (localStorage.getItem('token').length>=10){
+                this.setState({login__:true})
+                window.history.back()
+            }
+        }
         return(
                 <form className='signup' onClick={this.text} >
                     <p>تسجيل </p>
@@ -52,7 +56,7 @@ export default class Signup extends Component{
                         <input type="email" name="email" placeholder='الايميل' onChange={this.i_email}/>
                         <input type="password" name="password" placeholder='كلمة السر' onChange={this.i_password}/>
                     </label>
-                    {/* <input id="submit"  id='submit' onClick={this.signup} defaultValue='تسجيل' /> */}
+                    <input id="submit"  type='submit' onClick={this.signup} defaultValue='تسجيل' />
                     <p>اذا كان لديك حساب قم <span onClick={this.login} >بتسجيل الدخول</span></p> 
                 </form>
         )

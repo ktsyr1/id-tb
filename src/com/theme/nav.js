@@ -40,8 +40,8 @@ export default class Nav extends Component{
         if (this.state.login_s  === true){
             _login = 
             < div className='a' onClick ={()=>{
-                localStorage.setItem('username',undefined)
-                localStorage.setItem('token',undefined)
+                localStorage.removeItem('name')
+                localStorage.removeItem('token')
                 window.location.reload(false)
                 }}>
                 <img className='svg' src={logout_icon} alt={logout_icon} />
@@ -56,7 +56,7 @@ export default class Nav extends Component{
                 <div className='menu' >
                     <div className='__'>
                         <img className='svg' src={menu} alt={"menu"}  onClick={this.menu_close} />
-                        <p className='p_'>{localStorage.getItem('username')}@</p>
+                        <p className='p_'>{localStorage.getItem('name')}</p>
                     </div>
                     
                     <div>

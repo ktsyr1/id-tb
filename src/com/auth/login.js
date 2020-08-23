@@ -29,10 +29,10 @@ export default class Login extends Component{
             .then(res => {
                 this.setState({
                     token:res.data.token,
-                    username:res.data.username
+                    name:res.data.name
                 })  
                 localStorage.setItem('token', res.data.token);
-                localStorage.setItem('username', res.data.username);
+                localStorage.setItem('name', res.data.name);
             })
             //  document.querySelector('.login #submit').setAttribute('defaultValue','تاكيد تسجيل الدخول'),
         } 
@@ -45,7 +45,7 @@ export default class Login extends Component{
                 localStorage.setItem('token',undefined)
             } else if (localStorage.getItem('token').length>=10){
                 this.setState({login__:true})
-                window.location.replace('/')
+                window.history.back()
             }
         }
         let ss = <p>تسجيل الدخول</p>
