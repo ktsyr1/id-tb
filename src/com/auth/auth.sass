@@ -1,13 +1,17 @@
 @import ../center/center
-form.login ,form.signup
+form.login ,form.signup 
     width: 300px
+form.login ,form.signup ,form.add_center
     padding: 10px
     margin: 5px auto    
     @extend .sh , .b-r 
     label 
         display: grid
         div
-            margin: 10px
+            margin: 10px 
+            input
+                padding:  15px
+
             p 
                 width: fit-content
                 margin: -13px 25px 0 0
@@ -15,8 +19,7 @@ form.login ,form.signup
                 background-color: #fff
                 color: #2680eb
                 position: absolute
-                padding: 4px
-                border-radius: 5px 
+                padding: 0 10px 
     input  
         @extend .sh
         padding: 10px
@@ -38,3 +41,5 @@ form.login ,form.signup
     margin: 100px auto
 #auth #signup_box
     display: none
+.add_center
+    width: 90%

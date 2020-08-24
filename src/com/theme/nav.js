@@ -69,10 +69,10 @@ export default class Nav extends Component{
                     
                     <div>
                         <Itme url={'#'} icon={home} name={'الرئيسية'} />
-                        <Itme url={'#'} icon={hospital} name={'المراكز الطبية'} />
+                        <Itme url={'/add-center'} icon={hospital} name={' اظافة المراكز الطبية'} />
                         <Itme url={'#'} icon={hospital2} name={'المشافي'} />
                         <Itme url={'#'} icon={call} name={'الارقام الضرورية'} />
-                        <Itme url={'#'} icon={help} name={'حول التطبيق'} />
+                        <Itme url={'/about'} icon={help} name={'حول التطبيق'} />
                         {_login}
                           
                     </div>
