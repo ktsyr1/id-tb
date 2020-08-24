@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import Navbar from './navbar'
+import Edit from './itme'
+
 export default class About extends Component{ 
     render(){
         return(
             <>
             <Navbar />
+            <Edit />
             <div className=' '> 
                <div className='box '> 
                 <b>من نحن</b>
@@ -21,7 +24,7 @@ export default class About extends Component{
                         <p>3 - الوصول للاطباء بشكل اسرع </p>
                         <p>4 - تحديثات المعلومات بشكل مستمر</p>
                         <p>5 - حجم التطبيق صغير بحجم صورة كاميرا الهاتف</p>
-                        
+
                     </div>
                 </div>
                 
