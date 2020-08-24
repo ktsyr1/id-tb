@@ -1,17 +1,5 @@
-import React, { Component } from 'react'
-import {center,tables} from '../../models/config'
-import axios from 'axios'
-// com
-import Btn from './btn'
-import Time from './time'
-import Iframe from 'react-iframe'
-import Navbar from '../theme/navbar'
-// icon 
-import call from '../../svg/Icon ionic-ios-call.svg'
-import accessible_icon from '../../svg/Icon awesome-city.svg'
-import city from '../../svg/Icon awesome-city.svg'
-import maps from '../../svg/feather-map-pin.svg'
-import map from '../../svg/Icon awesome-map-marked-alt.svg'
+import React, { Component } from 'react' 
+import Navbar from '../theme/navbar' 
 import Edit from './itme'
 
 //
@@ -23,8 +11,7 @@ export default class Add_center extends Component {
          
     } 
 
-    render() {
-        const x = this.state.center
+    render() { 
         return (
             <div className='view' onClick={this.text} >
                     <Navbar />
