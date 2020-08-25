@@ -15,8 +15,7 @@ export default class Index extends Component {
         axios.get(centers)
             .then(res => this.setState({ data: res.data }))
             
-    } 
-    // text = () => console.log(this.state.data)
+    }  
     render() {
         return (
             <div> 
@@ -31,6 +30,7 @@ export default class Index extends Component {
                                 <div className='city __'>
                                     <img className='svg' src={map_pin} alt={"map_pin"}/>
                                     <p>{x.address.city}</p>
+ 
                                 </div>
                                 <div className='__' id={x.special_needs.toString()}>
                                     <img className='svg' src={accessible_icon} alt={"accessible_icon"}/>

@@ -104,7 +104,36 @@ th , td
             width: 200px
             margin: 5px
             text-align: start
-        
+.edit
+    position: absolute
+    width: 100%
+    background-color: #fff
+    display: none
+    label 
+        display: grid
+        div
+            margin: 10px 
+            input
+                padding:  15px
+            textarea , input  
+                @extend .sh
+                padding: 10px
+                margin: 5px
+                border: 0.5px solid #2680eb
+                border-radius: 20px
+                width: 90%
+            textarea
+                height: 90px
+            p 
+                width: fit-content
+                margin: -13px 25px 0 0
+                z-index: 11
+                background-color: #fff
+                color: #2680eb
+                position: absolute
+                padding: 0 10px
+
 @media screen and ( min-width: 426px )
     .card
         width: 538px
+ 

@@ -1,15 +1,34 @@
 import React, { Component } from 'react' 
-export default class Edit extends Component{ 
-    render(){
+import Axios from 'axios';
+import config from '../../models/config'
 
-        let _itme 
+export default class Edit extends Component{ 
+    deleteOne=(e) =>{
+        const token = localStorage.getItem('token') 
+        const id = this.props.data 
+        e.preventDefault(); 
+        Axios.delete(config.center(id),{headers:{ "x-auth-token" : token} })
+            .then(res => window.location.assign('/'))
+    }
+    edit(){
+        document.querySelector('.edit').style.display = 'grid' 
+        document.getElementById('Popup').style.display = 'none'
+
+        
+    }
+    render(){
+        let _itme , _deleteview
+         if( window.location.pathname.slice(0,8)==="/center/"){ 
+            _deleteview= <li onClick={this.deleteOne}>حذف المركز</li>
+        }
         if (localStorage.getItem("token")){
             if (localStorage.getItem("token")<10){
                 localStorage.setItem('token',undefined)
             }else {
                 _itme= <>
-                        <li>تعديل</li>
+                        <li onClick={this.edit}>تعديل</li>
                         <li>اظافة موعد</li>
+                        {_deleteview}
                     </>
             }  
         }

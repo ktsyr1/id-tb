@@ -13,6 +13,7 @@ import city from '../../svg/Icon awesome-city.svg'
 import maps from '../../svg/feather-map-pin.svg'
 import map from '../../svg/Icon awesome-map-marked-alt.svg'
 import Edit from './itme'
+import EditCenter from './Edit_center'
 
 //
 export default class View_center extends Component {
@@ -30,7 +31,8 @@ export default class View_center extends Component {
         return (
             <div className='view' onClick={this.text} >
                     <Navbar />
-                    <Edit/>
+                    <Edit data={this.props.match.params.id}/>
+                    <EditCenter center={this.state.center}/>
                     <div className='box '>
                         <p className='itr'>{x &&x.name}</p>
                     </div>

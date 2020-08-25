@@ -32,8 +32,8 @@ export default class Login extends Component{
             })
             //  document.querySelector('.login #submit').setAttribute('defaultValue','تاكيد تسجيل الدخول'),
         } 
-    i_email=(event)=> this.setState({mail:event.target.value});  
-    i_password=(event)=> this.setState({password:event.target.value});  
+        i_email=(event)=> this.setState({mail:event.target.value});  
+        i_password=(event)=> this.setState({password:event.target.value});  
 
     render(){ 
         let ss = <p>تسجيل الدخول</p>
@@ -60,7 +60,7 @@ export default class Login extends Component{
                     </div>
                 </label>
                     <input id="submit"  type="submit" onClick={this.login &&  this.login}  defaultValue=" بتسجيل الدخول "/>
-                <p>اذا لم يكان لديك حساب قم <span onClick={this.signup} > بتسجيل  </span></p> 
+                <p>اذا لم يكن لديك حساب قم <span onClick={this.signup} > بتسجيل  </span></p> 
             </form>
         )
     }

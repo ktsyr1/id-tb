@@ -36,16 +36,18 @@ export default class Nav extends Component{
         document.querySelector('.menu').style.display = 'none'
     } 
     render(){
-        let _login ,_name
+        let _login ,_name , _add_center
         if (localStorage.getItem("token")){
             if (localStorage.getItem("token").length>10){
                 _name = <p className='p_'>{localStorage.getItem('name')}</p>
+                 _add_center = <Itme url={'/add-center'} icon={hospital} name={' اظافة المراكز الطبية'} />
+                       
             }else{
             _name = <img className='svg' src={logo} alt={"logo"}/>
            }  
         }else{
             _name = <img className='svg' src={logo} alt={"logo"}/>
-           } 
+        } 
         if (this.state.login_s  === true){
             _login = 
             < div className='a' onClick ={()=>{
@@ -69,7 +71,7 @@ export default class Nav extends Component{
                     
                     <div>
                         <Itme url={'#'} icon={home} name={'الرئيسية'} />
-                        <Itme url={'/add-center'} icon={hospital} name={' اظافة المراكز الطبية'} />
+                        {_add_center}
                         <Itme url={'#'} icon={hospital2} name={'المشافي'} />
                         <Itme url={'#'} icon={call} name={'الارقام الضرورية'} />
                         <Itme url={'/about'} icon={help} name={'حول التطبيق'} />
