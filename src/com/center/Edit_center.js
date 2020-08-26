@@ -37,11 +37,22 @@ export default class Edit_center extends Component {
                 address:this.state.address,
                 map:this.state.map
             }
-        }
-        console.log(this.props.center._id);
-        
+        } 
+
         Axios.put( url , data , config )
-            .then(res => console.log(res) )
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    name:res.data.name,
+                    tele_phone:res.data.tele_phone,
+                    special_needs :res.data.special_needs,
+                    city:res.data.address.city,
+                    address:res.data.address.address,
+                    map:res.data.address.map
+                })
+                document.querySelector('.edit').style.display = 'none' 
+                document.getElementById('open_edit').style.display = 'block' 
+            })
             .catch(err=> console.log(err))
     }    
     open_edit=()=>{
