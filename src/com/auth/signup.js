@@ -46,7 +46,7 @@ export default class Signup extends Component{
         }
         
         return(
-                <form className='signup' onClick={this.text} >
+                <form className='forms signup' onClick={this.text} >
                     <p>تسجيل </p>
                     <label>
                         <div>

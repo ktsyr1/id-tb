@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css'; 
 import { BrowserRouter,Route, Switch } from 'react-router-dom'
 import Index from "./com/center/index";
-import View_center from './com/center/view'; 
+import View_center from './com/center/center/view.center'; 
 import Auth from './com/auth/auth';
 import Errors from './com/theme/error';
-import Add_center from './com/center/Add_center';
+import Add_center from './com/center/center/Add.center';
 import About from './com/theme/about';
 
 function App() {

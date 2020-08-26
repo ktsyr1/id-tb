@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
 //icon
-import passport from '../../svg/Icon awesome-passport.svg'
-import insurance from '../../svg/Icon map-insurance-agency.svg'
-import metro from '../../svg/Icon metro-profile.svg'
+import passport from '../../../svg/Icon awesome-passport.svg'
+import insurance from '../../../svg/Icon map-insurance-agency.svg'
+import metro from '../../../svg/Icon metro-profile.svg'
 
 export default class Btn extends Component {
     state = {}
@@ -31,7 +31,7 @@ export default class Btn extends Component {
                         <p>الجنسية</p>
                     </div> 
                     {this.props.data && this.props.data.map(i =>
-                        <Fragment key={i.Nationality}>
+                        <Fragment key={i._id}>
                             <button className='btn' id={i.Nationality} onClick={() => {
                                 this.setState({ document: i.document, Insurance: i.Insurance })
                                 this.clear()

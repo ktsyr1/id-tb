@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Itme from './itme'
+import Itme from './item'
 import menu from '../../svg/Icon feather-menu.svg'
 import search from '../../svg/Icon awesome-search.svg'
 import logo from '../../svg/logo.svg'

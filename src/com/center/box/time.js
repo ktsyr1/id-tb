@@ -1,6 +1,6 @@
 import React, { Component,Fragment } from 'react'  
 //icon 
-import star from '../../svg/Icon feather-star.svg'
+import star from '../../../svg/Icon feather-star.svg'
 
 export default class Time extends Component {
     state = {
@@ -17,7 +17,6 @@ export default class Time extends Component {
                 style.color = '#fff',
                 style.backgroundColor = '#007bff'
             )
-            
         })
        
     }

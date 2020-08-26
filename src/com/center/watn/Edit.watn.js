@@ -1,7 +1,7 @@
 import React, { Component} from 'react' 
 import Axios from 'axios'
-import {center } from '../../models/config'
-import edit_icon from '../../svg/Icon feather-edit.svg'
+import {center } from '../../../models/config'
+import edit_icon from '../../../svg/Icon feather-edit.svg'
 //
 export default class Edit_center extends Component {  
     constructor (props){

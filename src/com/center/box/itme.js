@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import Axios from 'axios';
-import config from '../../models/config'
+import config from '../../../models/config'
 
 export default class Edit extends Component{ 
     deleteOne=(e) =>{
@@ -10,7 +10,10 @@ export default class Edit extends Component{
         Axios.delete(config.center(id),{headers:{ "x-auth-token" : token} })
             .then(res => window.location.assign('/'))
     }
-    
+    add_watn=()=>{ 
+        document.querySelector('.add_watn').style.display = 'block'  
+        document.getElementById('Popup').style.display = 'none'
+    }
     render(){
         let _itme , _deleteview
          if( window.location.pathname.slice(0,8)==="/center/"){ 
@@ -21,7 +24,8 @@ export default class Edit extends Component{
                 localStorage.setItem('token',undefined)
             }else {
                 _itme= <> 
-                        <li>اظافة موعد</li>
+                        <li onClick={this.add_watn} >اظافة  معلومات الجنسية</li>
+                        <li>اظافة  موعد</li>
                         {_deleteview}
                     </>
             }  

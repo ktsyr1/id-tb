@@ -3,7 +3,7 @@ import Navbar from '../theme/navbar'
 import Login from './login'
 import './auth.sass'
 import Signup from './signup'
-import Edit from '../center/itme'
+import Edit from '../center/box/itme'
 // import menu from '../../svg/Icon feather-menu.svg' 
 export default class Auth extends Component{ 
     componentDidMount(){ 

@@ -47,7 +47,7 @@ export default class Login extends Component{
             }            
         }
         return(
-            <form className='login' onClick={this.text}> 
+            <form className='forms login' onClick={this.text}> 
                 {ss}
                 <label>
                     <div>

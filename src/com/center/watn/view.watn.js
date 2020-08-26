@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
-import {center,tables} from '../../models/config'
+import {center,tables} from '../../../models/config'
 import axios from 'axios'
 // com
-import Btn from './btn'
-import Time from './time'
+import Btn from '../box/btn'
+import Time from '../box/time'
 import Iframe from 'react-iframe'
-import Navbar from '../theme/navbar'
+import Navbar from '../../theme/navbar'
 // icon 
-import call from '../../svg/Icon ionic-ios-call.svg'
-import accessible_icon from '../../svg/Icon awesome-city.svg'
-import city from '../../svg/Icon awesome-city.svg'
-import maps from '../../svg/feather-map-pin.svg'
-import map from '../../svg/Icon awesome-map-marked-alt.svg'
-import Edit from './itme'
-import EditCenter from './Edit_center'
+import call from '../../../svg/Icon ionic-ios-call.svg'
+import accessible_icon from '../../../svg/Icon awesome-city.svg'
+import city from '../../../svg/Icon awesome-city.svg'
+import maps from '../../../svg/feather-map-pin.svg'
+import map from '../../../svg/Icon awesome-map-marked-alt.svg'
+
+import Edit from '../box/itme'
+import EditCenter from './Edit.center'
 
 //
 export default class View_center extends Component {

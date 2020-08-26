@@ -1,8 +1,8 @@
 import React, { useState} from 'react' 
-import Navbar from '../theme/navbar' 
-import Edit from './itme'
+import Navbar from '../../theme/navbar' 
+import Edit from '../box/itme'
 import Axios from 'axios'
-import {centers} from '../../models/config'
+import {centers} from '../../../models/config'
 //
 export default function Add_center () {   
     const [name ,set_name ] = useState('')  
@@ -36,7 +36,7 @@ export default function Add_center () {
         <div className='view' >
             <Navbar />
             <Edit/>
-            <form className='add_center'  >
+            <form className='forms add_center'  >
                 <p>اظافة مركز طبي </p>
                 <label>
                     <div>

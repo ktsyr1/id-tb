@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from './navbar'
-import Edit from './itme'
+import Edit from './item'
 
 export default class About extends Component{ 
     render(){
