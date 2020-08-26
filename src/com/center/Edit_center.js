@@ -115,7 +115,7 @@ export default class Edit_center extends Component {
                             </div>
                             <div>
                                 <p> العنوان على الخريطة  </p>
-                                <textarea type="text" name="map" value={x && x.map} onChange={this.set_map}/>
+                                <textarea type="text" name="map" defaultValue={x && x.map} onChange={this.set_map}/>
                             </div>
                         </label>
                         <div className='__'>
