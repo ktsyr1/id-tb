@@ -52,6 +52,7 @@ export default class Edit_center extends Component {
                 })
                 document.querySelector('.edit').style.display = 'none' 
                 document.getElementById('open_edit').style.display = 'block' 
+                window.location.reload(false)
             })
             .catch(err=> console.log(err))
     }    
