@@ -1,9 +1,10 @@
-@import ../center/center
+@import ../theme/style
 form.login ,form.signup 
     width: 300px
 form.login ,form.signup ,form.add_center
     padding: 10px
     margin: 5px auto    
+    direction: rtl
     @extend .sh , .b-r 
     label 
         display: grid
@@ -16,25 +17,25 @@ form.login ,form.signup ,form.add_center
                 width: fit-content
                 margin: -13px 25px 0 0
                 z-index: 11
-                background-color: #fff
-                color: #2680eb
+                background-color: $white
+                color: $bule
                 position: absolute
                 padding: 0 10px 
     input  
         @extend .sh
         padding: 10px
         margin: 5px
-        border: 0.5px solid #2680eb
+        border: 0.5px solid $bule
         border-radius: 20px
         width: 90%
     #submit
         @extend input
         width: 88%
-        background-color: #2680eb
-        color: #fff
+        background-color: $bule
+        color: $white
         text-align: center
     span 
-        color: #2680eb
+        color: $bule
     p 
         padding: 10px
 #login_box , #signup_box

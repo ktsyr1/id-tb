@@ -1,36 +1,25 @@
-.sh 
-    box-shadow: 0 1px 6px -3px #2680EB
-.b-r
-    border-radius: 20px
+@import ../theme/style
+ 
 .itr
     text-align: right
     margin-right: 20px
-.font16
-    font-size: 16px
-.__
-    display: flex
-    p 
-        margin: 8px 0
+
 .fullw
     width: 100%
 .ff
     flex-flow: wrap
 #false.__
-    color: #ff0000 
+    color: $red
     display: none
 a 
-    color: #707070
+    color: $bule
 .p10
     padding: 0 10px
 .pa10
     padding: 10px
 span.material-icons
-    color: #2680EB
-.box
-    @extend .sh , .b-r ,.font16
-    width: 90%
-    padding: 10px
-    margin: 5px auto
+    color: $bule
+
 iframe
     width: 100%
     height: 200px 
@@ -49,11 +38,11 @@ th , td
     margin-left: 10px
 .btn 
     @extend .box
-    background:#007bff
+    background: $bule 
     border: 0
     width: auto
     padding: 7px 14px
-    color: #ffffff
+    color: white
     margin: 5px 
 
 .document , .Insurance
@@ -63,8 +52,9 @@ th , td
         margin: 5px
 .card
     margin: 5px auto
-    color: #707070
+    color: $bule
     font-size: 12px
+    direction: rtl
     width: 85%
     padding: 5px
     @extend .sh , .b-r
@@ -83,11 +73,12 @@ th , td
             i
 
 #Popup
-    position: fixed
+    position: absolute
     z-index: 11
     overflow: hidden 
     width: 100%
     display: none
+    direction: rtl
     
     justify-content: flex-end   
     ul , div  
@@ -95,9 +86,9 @@ th , td
         margin: 10px
         list-style-type: none
     ul 
-        background: #fff
+        background: $white
         border-radius: 10px
-        box-shadow: 0 1px 6px -3px #2680EB 
+        box-shadow: 0 1px 6px -3px $bule 
         padding: 0
         li 
             padding: 5px 10px 5px 5px
@@ -107,8 +98,9 @@ th , td
 .edit
     position: absolute
     width: 100%
-    background-color: #fff
+    background-color: $white
     display: none
+    direction: rtl
     label 
         display: grid
         div
@@ -119,7 +111,7 @@ th , td
                 @extend .sh
                 padding: 10px
                 margin: 5px
-                border: 0.5px solid #2680eb
+                border: 0.5px solid $bule
                 border-radius: 20px
                 width: 90%
             textarea
@@ -128,12 +120,23 @@ th , td
                 width: fit-content
                 margin: -13px 25px 0 0
                 z-index: 11
-                background-color: #fff
-                color: #2680eb
+                background-color: $white
+                color: $bule
                 position: absolute
                 padding: 0 10px
 
 @media screen and ( min-width: 426px )
     .card
         width: 538px
- 
+#open_edit
+    position: fixed
+    top: 85%
+    background-color: $white
+    padding: 20px
+    box-shadow: 0 1px 6px -3px $bule
+    border-radius: 50%
+    margin: 0 0 0 20px
+    height: 20px
+    .svg 
+        padding: 0
+        margin: 0

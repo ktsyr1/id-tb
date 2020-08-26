@@ -2,7 +2,7 @@ import React, { useState} from 'react'
 import Navbar from '../theme/navbar' 
 import Edit from './itme'
 import Axios from 'axios'
-import config from '../../models/config'
+import {centers} from '../../models/config'
 //
 export default function Add_center () {   
     const [name ,set_name ] = useState('')  
@@ -25,9 +25,13 @@ export default function Add_center () {
     function add(e) {
         const token = localStorage.getItem('token') 
         e.preventDefault(); 
-        Axios.post(config.centers,data,{headers:{ "x-auth-token" : token} })
+        Axios.post(centers,data,{headers:{ "x-auth-token" : token} })
             .then(res => window.location.assign('/center/'+res.data._id))
-    }
+    } 
+        if (localStorage.getItem("token")){
+            if (localStorage.getItem("token").length>10){ 
+            }else window.location.assign('/')  
+        }else window.location.assign('/') 
     return (
         <div className='view' >
             <Navbar />
