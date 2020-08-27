@@ -73,6 +73,8 @@ export default class Nav extends Component{
                 localStorage.removeItem('name')
                 localStorage.removeItem('start_login')
                 localStorage.removeItem('end_login')
+                console.log(88);
+                
             }
         }
     }
