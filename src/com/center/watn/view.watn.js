@@ -6,7 +6,7 @@ import metro from '../../../svg/Icon metro-profile.svg'
 import item from '../../../svg/menu_item.svg'
 import Axios from 'axios'
 import Alert from '../../theme/alert'
-// import {center} from '../../../models/config'
+import {array} from '../../../models/config'
 
 export default class ViewWtan extends Component {
     state = {}
@@ -29,14 +29,10 @@ export default class ViewWtan extends Component {
         e.preventDefault(); 
         
         const token = localStorage.getItem('token')
-        const config = {headers:{ "x-auth-token" : token} }
-        const url = `http://localhost:5050/api/v1/array`
-        Axios.put(url,[{_id:this.state.i},{_id:window.location.pathname.slice(8)}],config)
+        const config = {headers:{ "x-auth-token" : token} } 
+        Axios.put(array,[{_id:this.state.i},{_id:window.location.pathname.slice(8)}],config)
             .then(res => {
                 this.setState({d:200})
-                console.log(res.status)
-                return  <Alert data='تم حذف معلومات الجنسية' />
-                
             })
             document.querySelector('#n_item').style.display= "none"
 
