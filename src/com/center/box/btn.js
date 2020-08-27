@@ -49,7 +49,7 @@ export default class Btn extends Component {
         if(x.d === 200 ) {
             _alert= <Alert data={`تم حذف معلومات الجنسية ${x.n}`} />
         }
-        let _item 
+        let _item ,_btn
         if (localStorage.getItem("token")){
             if (localStorage.getItem("token").length>10){
                 _item =<div id='n_item' > 
@@ -58,6 +58,9 @@ export default class Btn extends Component {
                                 <button onClick={this.de}>حذف معلومات الجنسية</button>
                             </ul>
                         </div> 
+                _btn=<button className='n_item' onClick={()=>  document.querySelector('#n_item').style.display= "block"}>
+                        <img className='svg '  src={item} alt={"item"}  /> 
+                    </button>
             }
         } 
         return (
@@ -67,9 +70,7 @@ export default class Btn extends Component {
                     <div className='__'>
                         <img className='svg' src={passport} alt={"passport"}/>
                         <p style={{width: "90%"}}>الجنسية</p>
-                        <button className='n_item' onClick={()=>  document.querySelector('#n_item').style.display= "block"}>
-                            <img className='svg '  src={item} alt={"item"}  /> 
-                        </button>
+                        {_btn}
 
                     </div> 
                     {_item}
