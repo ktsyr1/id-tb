@@ -29,8 +29,10 @@ export default class Login extends Component{
                 })  
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('name', res.data.name);
-            })
-            //  document.querySelector('.login #submit').setAttribute('defaultValue','تاكيد تسجيل الدخول'),
+                localStorage.setItem('start_login',[`${new Date().getHours()}.${new Date().getMinutes()} `]) 
+                localStorage.setItem('end_login',[`${new Date().getHours() + 1}.${new Date().getMinutes()} `]) 
+
+            })  
         } 
         i_email=(event)=> this.setState({mail:event.target.value});  
         i_password=(event)=> this.setState({password:event.target.value});  
@@ -59,7 +61,7 @@ export default class Login extends Component{
                         <input type="password" name="password" onChange={this.i_password}/>
                     </div>
                 </label>
-                    <input id="submit"  type="submit" onClick={this.login &&  this.login}  defaultValue=" بتسجيل الدخول "/>
+                    <input id="submit"  type="submit" onClick={this.login &&  this.login}  value=" بتسجيل الدخول "/>
                 <p>اذا لم يكن لديك حساب قم <span onClick={this.signup} > بتسجيل  </span></p> 
             </form>
         )

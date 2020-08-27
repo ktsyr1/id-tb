@@ -53,6 +53,7 @@ export default class Nav extends Component{
             < div className='a' onClick ={()=>{
                 localStorage.removeItem('name')
                 localStorage.removeItem('token')
+                localStorage.getItem('start_login')  
                 window.location.reload(false)
                 }}>
                 <img className='svg' src={logout_icon} alt={logout_icon} />
@@ -62,6 +63,21 @@ export default class Nav extends Component{
         }else{
             _login = <Itme url={'/auth'} icon={login} name={'تسجيل دخول'} />  
         }  
+        
+    let date = `${new Date().getHours()}.${new Date().getMinutes()} `
+    let end = localStorage.getItem('end_login')  
+    if (end){
+        if (end < 24){
+            if (end < date){
+                localStorage.removeItem('token')
+                localStorage.removeItem('name')
+                localStorage.removeItem('start_login')
+                localStorage.removeItem('end_login')
+                console.log(88);
+                
+            }
+        }
+    }
         return(
             <nav className='nav'>
                 <div className='menu' >

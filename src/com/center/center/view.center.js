@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import {center,tables} from '../../../models/config'
 import axios from 'axios'
 // com
-import Btn from '../box/btn'
-import Time from '../box/time'
+import ViewWtan from '../watn/view.watn'
+import ViewTable from '../table/view.table'
 import Iframe from 'react-iframe'
 import Navbar from '../../theme/navbar'
 // icon 
@@ -42,7 +42,7 @@ export default class View_center extends Component {
                         <p className='itr'>{x &&x.name}</p>
                     </div>
                     <div className='box'>
-                        <Btn data={x && x.wtan}/>
+                        <ViewWtan data={x && x.wtan}/>
                     </div>
                     <div className='box '>
                         <div className='itr __'>
@@ -57,7 +57,7 @@ export default class View_center extends Component {
                         </div>
                     </div>
                     <div className='box'>
-                        <Time data={this.state.tables} />
+                        <ViewTable data={this.state.tables} />
                     </div>   
                     <div className='box'>
                         <div className='itr __'>

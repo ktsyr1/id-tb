@@ -2,7 +2,7 @@ import React, { Component,Fragment } from 'react'
 //icon 
 import star from '../../../svg/Icon feather-star.svg'
 
-export default class Time extends Component {
+export default class ViewTable extends Component {
     state = {
         msg1:"اختار الاختصاص اولا"
     }

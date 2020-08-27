@@ -1,8 +1,6 @@
 import React, { Component} from 'react'  
 import Axios from 'axios'
 import {center} from '../../../models/config'
-// import {auth} from '../auth/check'
-
 //
 export default class AddWatn extends Component { 
     state = { 
@@ -18,8 +16,6 @@ export default class AddWatn extends Component {
         document.querySelector('.add_watn').style.display = 'none' 
     }
     add=(e) =>{
-        // auth()
-
         e.preventDefault(); 
         
         const token = localStorage.getItem('token')
@@ -34,26 +30,17 @@ export default class AddWatn extends Component {
             }]
         }  
         
-        Axios.put( url , data , config )
-        .then(res => {
-            // this.x_add   
-            console.log(res)
-            
-        })
+        Axios.patch( url , data , config )
+        .then(res => this.x_add)
     } 
+    // c=()=>{
+    //     if (localStorage.getItem("token")){
+    //         if (localStorage.getItem("token").length>10){ 
+    //         }else window.location.assign('/')  
+    //     }else window.location.assign('/') 
+    // }
+   
     render(){ 
-        
-    let date = `${new Date().getHours()}.${new Date().getMinutes()} `
-    let start = localStorage.getItem('time_login') 
-    let end = start + 1
-    if (start){
-        if (end <= 24){
-            if (end >= date){
-                console.log(11);
-                
-            }
-        }
-    }   
         return (
             <div className='add_watn' > 
                  <form className='forms   '  >

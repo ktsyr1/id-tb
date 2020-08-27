@@ -1,81 +1,113 @@
-import React, { Component } from 'react'
-import {center,tables} from '../../../models/config'
-import axios from 'axios'
-// com
-import Btn from '../box/btn'
-import Time from '../box/time'
-import Iframe from 'react-iframe'
-import Navbar from '../../theme/navbar'
-// icon 
-import call from '../../../svg/Icon ionic-ios-call.svg'
-import accessible_icon from '../../../svg/Icon awesome-city.svg'
-import city from '../../../svg/Icon awesome-city.svg'
-import maps from '../../../svg/feather-map-pin.svg'
-import map from '../../../svg/Icon awesome-map-marked-alt.svg'
+import React, { Component, Fragment } from 'react'
+//icon
+import passport from '../../../svg/Icon awesome-passport.svg'
+import insurance from '../../../svg/Icon map-insurance-agency.svg'
+import metro from '../../../svg/Icon metro-profile.svg'
+import item from '../../../svg/menu_item.svg'
+import Axios from 'axios'
+import Alert from '../../theme/alert'
+// import {center} from '../../../models/config'
 
-import Edit from '../box/itme'
-import EditCenter from './Edit.center'
+export default class ViewWtan extends Component {
+    state = {}
 
-//
-export default class View_center extends Component {
-    state = { }
     componentDidMount() {
-        axios.get(center(this.props.match.params.id))
-            .then(res => this.setState({ center: res.data }))
-        axios.get(tables(this.props.match.params.id))
-                .then(res => this.setState({ tables: res.data }))
+        const msg1 = " حدد جنسيتك اولا"
+        this.setState({ document: msg1, Insurance: msg1 })
     }
-    // text = () => console.log(this.state.tables)
+    text = () => console.log(this.state)
+    clear() {
+        this.props.data.map(n => {
+            const style = document.querySelector(`#s${n._id}`).style
+            return(
+                style.color = '#fff',
+                style.backgroundColor = '#007bff'
+            )
+        })
+    }
+    de=(e)=>{
+        e.preventDefault(); 
+        
+        const token = localStorage.getItem('token')
+        const config = {headers:{ "x-auth-token" : token} }
+        const url = `http://localhost:5050/api/v1/array`
+        Axios.put(url,[{_id:this.state.i},{_id:window.location.pathname.slice(8)}],config)
+            .then(res => {
+                this.setState({d:200})
+                console.log(res.status)
+                return  <Alert data='تم حذف معلومات الجنسية' />
+                
+            })
+            document.querySelector('#n_item').style.display= "none"
 
+            // .then(window.location.reload(false))
+    }
+    itmes = ()=>  document.querySelector('#n_item').style.display= "block"
     render() {
-        const x = this.state.center
+        let x = this.state 
+        let _alert 
+        if(x.d === 200 ) {
+            _alert= <Alert data={`تم حذف معلومات الجنسية ${x.n}`} />
+        }
+        let _item ,_btn
+        if (localStorage.getItem("token")){
+            if (localStorage.getItem("token").length>10){
+                _item =<div id='n_item' > 
+                            <ul> 
+                                <button>تعديل معلومات الجنسية</button>
+                                <button onClick={this.de}>حذف معلومات الجنسية</button>
+                            </ul>
+                        </div> 
+                _btn=<button className='n_item' onClick={()=>  document.querySelector('#n_item').style.display= "block"}>
+                        <img className='svg '  src={item} alt={"item"}  /> 
+                    </button>
+            }
+        } 
         return (
-            <div className='view' onClick={this.text} >
-                    <Navbar />
-                    <Edit data={this.props.match.params.id}/>
-                    <EditCenter center={this.state.center}/>
-                    <div className='box '>
-                        <p className='itr'>{x &&x.name}</p>
-                    </div>
-                    <div className='box'>
-                        <Btn data={x && x.wtan}/>
-                    </div>
-                    <div className='box '>
-                        <div className='itr __'>
-                            <img className='svg' src={call} alt={"call"}/>
-                            <p className='p10'>  رقم الهاتف  </p>
-                            <a href={`tel:${x && x.tele_phone}`} className='pa10'>{x && x.tele_phone}</a> 
-                        </div>
-                        <div className='itr __'>
-                            <img className='svg' src={accessible_icon} alt={"accessible_icon"}/>
-                            <p className='p10'>مدخل ذوي الاحتياجات الخاصة </p>
-                            <p>{x && x.special_needs}</p>
-                        </div>
-                    </div>
-                    <div className='box'>
-                        <Time data={this.state.tables} />
-                    </div>   
-                    <div className='box'>
-                        <div className='itr __'>
-                            <img className='svg' src={city} alt={"city"}/>
-                            <p className='p10'>المدينة</p>
-                            <p>{x && x.address && x.address.city}</p>
-                        </div>
-                        <div className='itr __'>
-                            <img className='svg' src={maps} alt={"maps"}/>
-                            <p className='p10'>  العنوان  </p>
-                            <p>{x && x.address && x.address.address}</p>
-                        </div>
-                        <div className='itr __'>
-                            <img className='svg' src={map} alt={"map"}/>
-                            <p className='p10'>  العنوان على الخريطة  </p>
-                        </div>
-                        <Iframe url= {x && x.address && x.address.map} className="b-r" />
+            <Fragment>
+                {_alert}
+                <div className='itr ff'>
+                    <div className='__'>
+                        <img className='svg' src={passport} alt={"passport"}/>
+                        <p style={{width: "90%"}}>الجنسية</p>
+                        {_btn}
 
-                    </div>
+                    </div> 
+                    {_item}
+                    {this.props.data && this.props.data.map(i =>
+                        <Fragment key={i._id}>
+                            <button className='btn' id={`s${i._id}`} onClick={() => {
+                                this.setState({ document: i.document, Insurance: i.Insurance ,i:i._id, n :i.Nationality})
+                                this.clear()
+                                const style = document.querySelector(`#s${i._id}`).style
+                                style.color = '#000'
+                                style.backgroundColor = '#fff'
+                                this.setState({d:201})
+                                document.querySelector('.n_item').style.display = "block"
+                            }}>{i.Nationality}</button></Fragment>
+                    )}
+                </div>
+                <table className='gn'>
+                    <thead className='itr __'>
+                        <tr>
+                            <img className='svg' src={metro} alt={"metro"}/>
+                            <img className='svg' src={insurance} alt={"insurance"}/>
 
-            </div>
+                        </tr>
+                        <tr>
+                            <td>الاوراق الثبوتية</td>
+                            <td>التامين</td> 
+                        </tr>
+                    </thead>
+                    <tbody className='itr __'>
+                        <tr>
+                            <td>{x.document}</td>
+                            <td>{x.Insurance}</td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+            </Fragment>
         )
     }
 }
-

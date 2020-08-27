@@ -34,6 +34,7 @@ export default class Signup extends Component{
                 this.setState({ data:res.data })
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('name', this.state && this.state.name );
+                localStorage.setItem('time_login',[`${new Date().getHours()}.${new Date().getMinutes()} `]) 
 
             })
     }
@@ -66,7 +67,7 @@ export default class Signup extends Component{
                             <input type="password" name="password"   onChange={this.i_password}/>
                         </div>
                     </label>
-                    <input id="submit"  type='submit' onClick={this.signup} defaultValue='تسجيل' />
+                    <input id="submit"  type='submit' onClick={this.signup} value='تسجيل' />
                     <p>اذا كان لديك حساب قم <span onClick={this.login} >بتسجيل الدخول</span></p> 
                 </form>
         )
