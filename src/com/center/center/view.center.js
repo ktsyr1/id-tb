@@ -16,7 +16,6 @@ import map from '../../../svg/Icon awesome-map-marked-alt.svg'
 import Edit from '../box/itme'
 import EditCenter from './Edit.center'
 import AddWatn from '../watn/Add.watn'
-import AddTable from '../table/Add.table'
 
 //
 export default class View_center extends Component {
@@ -37,7 +36,7 @@ export default class View_center extends Component {
                     <Edit data={this.props.match.params.id}/>
                     <EditCenter center={this.state.center}/>
                     <AddWatn />
-                    <AddTable />
+                    
                     <div className='box '>
                         <p className='itr'>{x &&x.name}</p>
                     </div>
