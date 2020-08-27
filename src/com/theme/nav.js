@@ -97,7 +97,7 @@ export default class Nav extends Component{
                 </div>
                 <img className='svg' src={menu} alt={"menu"} onClick={this.menu_open} />
                 {_name}
-                <img className='svg' src={search} alt={"search"}/>
+                <img className='svg' src={search} alt={"search"} style={{opacity: 0.01}}/>
             </nav>
         )
     }
