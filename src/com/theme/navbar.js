@@ -10,18 +10,7 @@ export default class Navbar extends Component{
         document.getElementById('Popup').style.display = 'flex'
     } 
     render(){
-        let date = `${new Date().getHours()}.${new Date().getMinutes()} `
-        let end = localStorage.getItem('end_login')  
-        if (end){
-            if (end < 24){
-                if (end < date){
-                    localStorage.removeItem('token')
-                    localStorage.removeItem('name')
-                    localStorage.removeItem('start_login')
-                    localStorage.removeItem('end_login')
-                }
-            }
-        }
+        
         return(
             <nav className='navbar '>
                <div onClick={()=>window.history.back()}>
