@@ -31,15 +31,12 @@ export default class AddWatn extends Component {
         }  
         
         Axios.patch( url , data , config )
-        .then(res => this.x_add)
+         .then(res => {
+            if (res.status===200){
+                window.location.reload(false)
+            }
+         })
     } 
-    // c=()=>{
-    //     if (localStorage.getItem("token")){
-    //         if (localStorage.getItem("token").length>10){ 
-    //         }else window.location.assign('/')  
-    //     }else window.location.assign('/') 
-    // }
-   
     render(){ 
         return (
             <div className='add_watn' > 

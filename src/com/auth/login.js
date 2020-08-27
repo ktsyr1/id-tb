@@ -23,15 +23,13 @@ export default class Login extends Component{
         url = config.login
         axios.post(url, _data)
             .then(res => {
-                this.setState({
-                    token:res.data.token,
-                    name:res.data.name
-                })  
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('name', res.data.name);
                 localStorage.setItem('start_login',[`${new Date().getHours()}.${new Date().getMinutes()} `]) 
                 localStorage.setItem('end_login',[`${new Date().getHours() + 1}.${new Date().getMinutes()} `]) 
-
+                if (res.status===200){
+                    window.location.reload('/')
+                }
             })  
         } 
         i_email=(event)=> this.setState({mail:event.target.value});  

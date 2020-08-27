@@ -14,6 +14,10 @@ export default class Edit extends Component{
         document.querySelector('.add_watn').style.display = 'block'  
         document.getElementById('Popup').style.display = 'none'
     }
+    add_table = ()=>{ 
+        document.querySelector('.add_table').style.display = 'block'  
+        document.getElementById('Popup').style.display = 'none'
+    }
     render(){
         let _itme , _deleteview
          if( window.location.pathname.slice(0,8)==="/center/"){ 
@@ -25,7 +29,7 @@ export default class Edit extends Component{
             }else {
                 _itme= <> 
                         <li onClick={this.add_watn} >اظافة  معلومات الجنسية</li>
-                        <li>اظافة  موعد</li>
+                        <li onClick={this.add_table}>اضافة  معلومات الدوام والاختصاصات</li>
                         {_deleteview}
                     </>
             }  
