@@ -49,6 +49,17 @@ export default class Btn extends Component {
         if(x.d === 200 ) {
             _alert= <Alert data={`تم حذف معلومات الجنسية ${x.n}`} />
         }
+        let _item 
+        if (localStorage.getItem("token")){
+            if (localStorage.getItem("token").length>10){
+                _item =<div id='n_item' > 
+                            <ul> 
+                                <button>تعديل معلومات الجنسية</button>
+                                <button onClick={this.de}>حذف معلومات الجنسية</button>
+                            </ul>
+                        </div> 
+            }
+        } 
         return (
             <Fragment>
                 {_alert}
@@ -61,13 +72,7 @@ export default class Btn extends Component {
                         </button>
 
                     </div> 
-                    <div id='n_item' > 
-                        <ul> 
-                            <button>تعديل معلومات الجنسية</button>
-                            <button onClick={this.de}>حذف معلومات الجنسية</button>
-                        </ul>
-                        
-                    </div> 
+                    {_item}
                     {this.props.data && this.props.data.map(i =>
                         <Fragment key={i._id}>
                             <button className='btn' id={`s${i._id}`} onClick={() => {
