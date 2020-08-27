@@ -17,12 +17,12 @@
     <script type="text/JavaScript">
       if('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register('/service-worker.js')
+          .register('/serviceWorker.js')
           .then(function() {});
       }
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('/serviceWorker.js')
           .then((reg) => {  });
          });
       }

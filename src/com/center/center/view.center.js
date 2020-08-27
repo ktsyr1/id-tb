@@ -26,8 +26,7 @@ export default class View_center extends Component {
             .then(res => this.setState({ center: res.data }))
         axios.get(tables(this.props.match.params.id))
                 .then(res => this.setState({ tables: res.data }))
-    }
-    // text = () => console.log(this.state.tables)
+    } 
 
     render() {
         const x = this.state.center 

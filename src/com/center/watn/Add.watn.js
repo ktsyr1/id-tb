@@ -18,8 +18,7 @@ export default class AddWatn extends Component {
         document.querySelector('.add_watn').style.display = 'none' 
     }
     add=(e) =>{
-        // auth()
-
+        
         e.preventDefault(); 
         
         const token = localStorage.getItem('token')
@@ -34,12 +33,12 @@ export default class AddWatn extends Component {
             }]
         }  
         
-        Axios.put( url , data , config )
+        Axios.post( url , data , config )
         .then(res => {
-            // this.x_add   
             console.log(res)
             
         })
+        window.location.reload(false)
     } 
     render(){ 
         

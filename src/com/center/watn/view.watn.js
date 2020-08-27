@@ -7,6 +7,7 @@ import item from '../../../svg/menu_item.svg'
 import Axios from 'axios'
 import Alert from '../../theme/alert'
 import {array} from '../../../models/config'
+import Img from '../box/icon'
 
 export default class ViewWtan extends Component {
     state = {}
@@ -83,26 +84,27 @@ export default class ViewWtan extends Component {
                             }}>{i.Nationality}</button></Fragment>
                     )}
                 </div>
-                <table className='gn'>
-                    <thead className='itr __'>
-                        <tr>
-                            <img className='svg' src={metro} alt={"metro"}/>
-                            <img className='svg' src={insurance} alt={"insurance"}/>
-
-                        </tr>
-                        <tr>
-                            <td>الاوراق الثبوتية</td>
-                            <td>التامين</td> 
-                        </tr>
-                    </thead>
-                    <tbody className='itr __'>
-                        <tr>
-                            <td>{x.document}</td>
-                            <td>{x.Insurance}</td>
-                        </tr>
-                    </tbody>
-                    
-                </table>
+                <div className='__'>
+                    <div className='h_icon'> 
+                        <Img src={metro}/>
+                        <img className='svg' src={insurance} alt={"insurance"}/>
+                                
+                    </div>
+                    <table className='gn'>
+                        <thead className='itr __'> 
+                            <tr>
+                                <td>الاوراق الثبوتية</td>
+                                <td>التامين</td> 
+                            </tr>
+                        </thead>
+                        <tbody className='itr __'>
+                            <tr>
+                                <td>{x.document}</td>
+                                <td>{x.Insurance}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </Fragment>
         )
     }
