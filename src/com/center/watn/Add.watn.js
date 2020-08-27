@@ -35,11 +35,14 @@ export default class AddWatn extends Component {
         
         Axios.post( url , data , config )
         .then(res => {
+            if (res.status === 200) {
+                window.location.reload(false)
+            }
             console.log(res)
             
         })
-        window.location.reload(false)
-    } 
+        
+    }  
     render(){ 
         
     let date = `${new Date().getHours()}.${new Date().getMinutes()} `
