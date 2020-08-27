@@ -10,6 +10,11 @@ export default class AddWatn extends Component {
     set_document =(e)=> this.setState({document:e.target.value}) 
     set_Nationality =(e)=> this.setState({Nationality:e.target.value}) 
 
+    x_add=(e)=>{ 
+        e.preventDefault(); 
+        document.querySelector('#Popup').style.display = 'none' 
+        document.querySelector('.add_watn').style.display = 'none' 
+    }
     add=(e) =>{
         e.preventDefault(); 
         
@@ -23,10 +28,10 @@ export default class AddWatn extends Component {
                 document: this.state.document,
                 Nationality: this.state.Nationality
             }]
-        } 
+        }  
         
-        Axios.put( url , data , config )
-            .then(res => console.log(res.data) )
+        Axios.patch( url , data , config )
+        .then(res => this.x_add)
     } 
     // c=()=>{
     //     if (localStorage.getItem("token")){
@@ -34,11 +39,7 @@ export default class AddWatn extends Component {
     //         }else window.location.assign('/')  
     //     }else window.location.assign('/') 
     // }
-    x_add=(e)=>{ 
-        e.preventDefault(); 
-        document.querySelector('#Popup').style.display = 'none' 
-        document.querySelector('.add_watn').style.display = 'none' 
-    }
+   
     render(){ 
         return (
             <div className='add_watn' > 
@@ -47,7 +48,7 @@ export default class AddWatn extends Component {
                    <label>
                         <div>
                             <p>الجنسية</p>
-                            <input type="text" name="Insurance"  onChange={this.set_Insurance} />
+                            <input type="text" name="Nationality"  onChange={this.set_Nationality} />
                         </div>
                         <div>
                             <p>الاوراق الثبوتية</p>
@@ -56,7 +57,7 @@ export default class AddWatn extends Component {
                          
                         <div>
                             <p>التأمين</p>
-                            <input type="text" name="Nationality" onChange={this.set_Nationality}/>
+                            <input type="text" name="Insurance" onChange={this.set_Insurance}/>
                         </div> 
                     </label>
                     <div className='__'>
