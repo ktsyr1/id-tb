@@ -7,7 +7,7 @@ export default class ViewTable extends Component {
         msg1:"اختار الاختصاص اولا"
     }
 
-    componentDidMount() {  
+    componentDidMount() {  //
     }
     text = () => console.log(this.state.time)
     clear() {
@@ -19,7 +19,7 @@ export default class ViewTable extends Component {
             )
         })
        
-    }
+    } 
     render() {
         const x = this.props.data
         const s = this.state.time
