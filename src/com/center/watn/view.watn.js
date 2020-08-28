@@ -83,7 +83,9 @@ export default class ViewWtan extends Component {
                                 style.color = '#000'
                                 style.backgroundColor = '#fff'
                                 this.setState({d:201})
-                                document.querySelector('.n_item').style.display = "block"
+                                if(document.querySelector('.n_item')){
+                                    document.querySelector('.n_item').style.display = "block"
+                                }
                             }}>{i.Nationality}</button></Fragment>
                     )}
                 </div>

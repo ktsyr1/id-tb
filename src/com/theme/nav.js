@@ -73,7 +73,7 @@ export default class Nav extends Component{
                 <div className='menu' >
                     <div className='__'>
                         <img className='svg' src={menu} alt={"menu"}  onClick={this.menu_close} /> 
-                        <p className='box'>{localStorage.getItem('end_login')}</p>
+                        <p className='box'>تنتهي الجلسة في ( {localStorage.getItem('end_login')})</p>
                     </div>
                     
                     <div>

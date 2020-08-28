@@ -86,12 +86,14 @@ export default class ViewTable extends Component {
                                 <Fragment key={i._id} >
                                     <button className='btn' id={`s${i._id}`}
                                         onClick={() => {
-                                            this.setState({ time: i.time,msg1:"", i:i._id , n : i.props})
+                                            this.setState({ time: i.time,msg1:"", i:i._id , n : i.purview})
                                             this.clear()
                                             const style = document.getElementById(`s${i._id}`).style
                                             style.color = '#000'
                                             style.backgroundColor = '#fff'
-                                            document.querySelector('.t_item').style.display = "block"
+                                            if (document.querySelector('.t_item')){
+                                                document.querySelector('.t_item').style.display = "block"
+                                            }
                                             this.setState({d:201})
 
                                         }}>
