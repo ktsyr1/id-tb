@@ -20,6 +20,10 @@ export default class ViewWtan extends Component {
     clear() {
         this.props.data.map(n => {
             const style = document.querySelector(`#s${n._id}`).style
+            if (document.querySelector(`.alert`)){
+                document.querySelector(`.alert`).style.display= "none"
+            }
+
             return(
                 style.color = '#fff',
                 style.backgroundColor = '#007bff'
@@ -35,8 +39,10 @@ export default class ViewWtan extends Component {
             .then(res => {
                 this.setState({d:200})
             })
+            document.querySelector(`#s${this.state.i}`).style.display= "none"
             document.querySelector('#n_item').style.display= "none"
-
+            this.setState({ document: '', Insurance: '' ,i:''})
+            
             // .then(window.location.reload(false))
     }
     itmes = ()=>  document.querySelector('#n_item').style.display= "block"
@@ -78,9 +84,12 @@ export default class ViewWtan extends Component {
                                 this.clear()
                                 const style = document.querySelector(`#s${i._id}`).style
                                 style.color = '#000'
-                                style.backgroundColor = '#fff'
+                                style.backgroundColor = '#fff' 
+                                if (document.querySelector('.n_item')){
+                                    document.querySelector('.n_item').style.display = "block"
+                                }
                                 this.setState({d:201})
-                                document.querySelector('.n_item').style.display = "block"
+
                             }}>{i.Nationality}</button></Fragment>
                     )}
                 </div>
