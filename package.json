@@ -1,7 +1,7 @@
 {
   "name": "id_tb",
   "version": "0.1.0",
-  "homepage": "http://ktsyr1.github.io/id-tb",
+  "homepage": "/",
   "private": true,
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
