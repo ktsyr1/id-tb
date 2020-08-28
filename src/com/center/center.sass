@@ -8,7 +8,9 @@
     width: 100%
 .ff
     flex-flow: wrap
-    .n_item 
+    .__ p 
+        width: 90%
+    .n_item ,.t_item 
         width: 40px
         height: 40px
         box-sizing: content-box
@@ -153,7 +155,7 @@ th , td
     .svg 
         padding: 0
         margin: 0
-.add_watn 
+.add_watn ,.add_table
     width: 94%
     margin: auto 3%
     position: absolute
@@ -161,7 +163,7 @@ th , td
     .__ 
         margin: auto
         width: 90%
-#n_item 
+#n_item , #t_item 
     position: absolute
     @extend .sh , .b-r
     padding: 10px
@@ -182,3 +184,11 @@ th , td
 
 .h_icon 
     display:  grid
+.add_table .__3 
+    display: flex
+    justify-content: center
+    div 
+        width: 45%
+        margin: 0 0 0 10%
+        input 
+            background-color: #FFF

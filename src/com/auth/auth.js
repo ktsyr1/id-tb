@@ -3,17 +3,8 @@ import Navbar from '../theme/navbar'
 import Login from './login'
 import './auth.sass'
 import Signup from './signup'
-import Edit from '../center/box/itme'
-// import menu from '../../svg/Icon feather-menu.svg' 
-export default class Auth extends Component{ 
-    componentDidMount(){ 
-            // if (localStorage.getItem("token")<10){
-            //     localStorage.setItem('token','')
-            // } else if (localStorage.getItem('token').length>=10){
-            //     this.setState({login__:true})
-                
-            // } 
-    }
+import Edit from '../center/box/itme' 
+export default class Auth extends Component{  
     render(){
         if (localStorage.getItem("token")){
             if (localStorage.getItem("token").length> 10){
@@ -21,6 +12,18 @@ export default class Auth extends Component{
                 this.setState({login__:true})
             }            
         }
+        // let date = `${new Date().getHours()}.${new Date().getMinutes()} `
+        // let end = localStorage.getItem('end_login')  
+        // if (end){
+        //     if (end < 24){
+        //         if (end > date){
+        //             localStorage.removeItem('token')
+        //             localStorage.removeItem('name')
+        //             localStorage.removeItem('start_login')
+        //             localStorage.removeItem('end_login')
+        //         }
+        //     }
+        // }
         return(
             <div id='auth'>
                 <Navbar />
