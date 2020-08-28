@@ -36,7 +36,9 @@ export default class Nav extends Component{
         document.querySelector('.menu').style.display = 'none'
     } 
     render(){
-        let _login ,_name , _add_center
+        let _login ,_name , _add_center 
+        let date = `${new Date().getHours()}.${new Date().getMinutes()} `
+        let end = localStorage.getItem('end_login')  
         if (localStorage.getItem("token")){
             if (localStorage.getItem("token").length>10){
                 _name = <p className='p_'>{localStorage.getItem('name')}</p>
@@ -47,42 +49,31 @@ export default class Nav extends Component{
            }  
         }else{
             _name = <img className='svg' src={logo} alt={"logo"}/>
-        } 
-        if (this.state.login_s  === true){
-            _login = 
-            < div className='a' onClick ={()=>{
-                localStorage.removeItem('name')
-                localStorage.removeItem('token')
-                localStorage.getItem('start_login')  
-                window.location.reload(false)
-                }}>
-                <img className='svg' src={logout_icon} alt={logout_icon} />
-                <p>تسجيل خروج</p>
-            </div>
-        
-        }else{
-            _login = <Itme url={'/auth'} icon={login} name={'تسجيل دخول'} />  
-        }  
-        
-    let date = `${new Date().getHours()}.${new Date().getMinutes()} `
-    let end = localStorage.getItem('end_login')  
-    if (end){
-        if (end < 24){
-            if (end < date){
-                localStorage.removeItem('token')
-                localStorage.removeItem('name')
-                localStorage.removeItem('start_login')
-                localStorage.removeItem('end_login')
-                console.log(88);
-                
-            }
         }
-    }
+        _login = <Itme url={'/auth'} icon={login} name={'تسجيل دخول'} />  
+        if (end){
+            if (end < 24){
+                if (end > date){
+                        _login = 
+                            < div className='a' onClick ={()=>{
+                                localStorage.removeItem('name')
+                                localStorage.removeItem('token')
+                                localStorage.removeItem('start_login')  
+                                localStorage.removeItem('end_login')  
+                                window.location.reload(false)
+                                }}>
+                                <img className='svg' src={logout_icon} alt={logout_icon} />
+                                <p>تسجيل خروج</p>
+                            </div>
+                }
+            }
+        } 
         return(
             <nav className='nav'>
                 <div className='menu' >
                     <div className='__'>
                         <img className='svg' src={menu} alt={"menu"}  onClick={this.menu_close} /> 
+                        <p className='box'>{localStorage.getItem('end_login')}</p>
                     </div>
                     
                     <div>
