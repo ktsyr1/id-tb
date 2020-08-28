@@ -1,47 +1,36 @@
 import React, { Component} from 'react'  
 import Axios from 'axios'
-import {tables} from '../../../models/config'
+import {center} from '../../../models/config'
 //
-export default class AddTable extends Component { 
+export default class AddWatn extends Component { 
     state = { 
-        center_id:'',
-        purview:'', 
-        tody:'',
-        start:'',
-        end:'',
-        doctor:''
+        Insurance: [] , document: '', Nationality: ""  
     } 
-    set_purview =(e)=> this.setState({purview:e.target.value}) 
-    set_tody =(e)=> this.setState({tody:e.target.value}) 
-    set_start =(e)=> this.setState({start:e.target.value}) 
-    set_end =(e)=> this.setState({end:e.target.value}) 
-    set_doctor =(e)=> this.setState({doctor:e.target.value}) 
+    set_Insurance =(e)=> this.setState({Insurance:e.target.value}) 
+    set_document =(e)=> this.setState({document:e.target.value}) 
+    set_Nationality =(e)=> this.setState({Nationality:e.target.value}) 
 
     x_add=(e)=>{ 
         e.preventDefault(); 
         document.querySelector('#Popup').style.display = 'none' 
-         document.querySelector('.add_table').style.display = 'none' 
+        document.querySelector('.add_watn').style.display = 'none' 
     }
     add=(e) =>{
         e.preventDefault(); 
-        let _id = window.location.pathname.slice(8)
-        const url = tables(_id)
+        
         const token = localStorage.getItem('token')
-        const config = {headers:{ "x-auth-token" : token} } 
+        const config = {headers:{ "x-auth-token" : token} }
+        const url = center(window.location.pathname.slice(8))
          
         const data ={
-            center_id: _id,
-            purview: this.state.purview ,
-            time: [
-                { 
-                    tody: this.state.tody,
-                    start: this.state.start,
-                    end: this.state.end,
-                    doctor:  this.state.doctor
-                }, 
-            ], 
+            wtan:[{
+                Insurance: this.state.Insurance,
+                document: this.state.document,
+                Nationality: this.state.Nationality
+            }]
         }  
-        Axios.post( url , data , config ) 
+        
+        Axios.patch( url , data , config )
          .then(res => {
             if (res.status===200){
                 window.location.reload(false)
@@ -50,37 +39,28 @@ export default class AddTable extends Component {
     } 
     render(){ 
         return (
-            <div className='add_table'>
-                <form className='forms   '  >
-                    <p>اظافة  معلومات الاختصاص </p>
-                    <label>
+            <div className='add_watn' > 
+                 <form className='forms   '  >
+                    <p>اظافة  معلومات الجنسية </p>
+                   <label>
                         <div>
-                        <p>الاختصاص</p>
-                            <input type="text" name="purview"  onChange={this.set_purview} />
+                            <p>الجنسية</p>
+                            <input type="text" name="Nationality"  onChange={this.set_Nationality} />
                         </div>
                         <div>
-                        <p>الطبيب/ة</p>
-                             <input type="text" name="doctor" onChange={this.set_doctor}/>
+                            <p>الاوراق الثبوتية</p>
+                            <input type="text" name="document" onChange={this.set_document}  />
                         </div>
                          
                         <div>
-                        <p>يوم الدوام</p>
-                            <input type="text" name="tody" onChange={this.set_tody}  />
-                        </div>
-                        <div className='__3'>
-                            <div>
-                                <p>من الساعة</p>
-                                <input type="time" name="start" onChange={this.set_start}  />
-                            </div> 
-                            <div>
-                                <p>الى الساعة</p>
-                                <input type="time" name="end" onChange={this.set_end}  />
-                            </div>
+                            <p>التأمين</p>
+                            <input type="text" name="Insurance" onChange={this.set_Insurance}/>
                         </div> 
                     </label>
                     <div className='__'>
                             <input id="submit"  type='submit' onClick={this.x_add} value='الغاء'  style={{backgroundColor:"#fff",color:"#000"}}/>
-                            <input id="submit"  type='submit' onClick={this.add} value='اظافة معلومات الاختصاص' />
+                            <input id="submit"  type='submit' onClick={this.add} value='اظافة معلومات الجنسية' />
+
                         </div>
                 </form>
             

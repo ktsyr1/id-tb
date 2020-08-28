@@ -1,4 +1,4 @@
-exports = ()=>{
+exports.auth = ()=>{
     
     let date = `${new Date().getHours()}.${new Date().getMinutes()} `
     let end = localStorage.getItem('end_login')  

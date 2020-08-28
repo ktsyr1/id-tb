@@ -23,13 +23,12 @@ export default class Login extends Component{
         url = config.login
         axios.post(url, _data)
             .then(res => {
-                if (res.status===200){ 
-                    localStorage.setItem('token', res.data.token);
-                    localStorage.setItem('name', res.data.name);
-                    localStorage.setItem('start_login',[`${new Date().getHours()}.${new Date().getMinutes()} `]) 
-                    localStorage.setItem('end_login',[`${new Date().getHours() + 1}.${new Date().getMinutes()} `]) 
-                    window.location.reload('/') 
-
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('name', res.data.name);
+                localStorage.setItem('start_login',[`${new Date().getHours()}.${new Date().getMinutes()} `]) 
+                localStorage.setItem('end_login',[`${new Date().getHours() + 1}.${new Date().getMinutes()} `]) 
+                if (res.status===200){
+                    window.location.reload('/')
                 }
             })  
         } 
@@ -41,6 +40,12 @@ export default class Login extends Component{
         if (this.state.login__  === true){
             ss= <div> تم تسجيل الدخول </div>
         } 
+        if (localStorage.getItem("token")){
+            if (localStorage.getItem("token").length> 10){
+                window.location.assign('/') 
+                this.setState({login__:true})
+            }            
+        }
         return(
             <form className='forms login' onClick={this.text}> 
                 {ss}

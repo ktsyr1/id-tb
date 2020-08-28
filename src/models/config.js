@@ -4,7 +4,6 @@ const URL= host
 exports.centers =  URL+`/api/v1/center/`
 exports.center =(x) =>  `${URL}/api/v1/center/${x}`
 exports.tables =(x) => `${URL}/api/v1/tables/${x}`
-exports.table =(x) => `${URL}/api/v1/table/${x}`
 exports.array = `${URL}/api/v1/array/`
 //auth
 exports.login = `${URL}/auth/v1/login`
