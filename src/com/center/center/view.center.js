@@ -17,6 +17,7 @@ import Edit from '../box/itme'
 import EditCenter from './Edit.center'
 import AddWatn from '../watn/Add.watn'
 import AddTable from '../table/Add.table'
+import AddTody from '../table/Add_tody.table'
 
 //
 export default class View_center extends Component {
@@ -38,6 +39,7 @@ export default class View_center extends Component {
                     <EditCenter center={this.state.center}/>
                     <AddWatn />
                     <AddTable />
+                    <AddTody />
                     <div className='box '>
                         <p className='itr'>{x &&x.name}</p>
                     </div>

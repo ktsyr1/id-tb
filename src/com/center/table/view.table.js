@@ -49,6 +49,10 @@ export default class ViewTable extends Component {
                 }
             })
     }
+    add_tody = ()=>{
+        document.querySelector('.add_tody').style.display='block'
+        document.querySelector('#t_item').style.display='none'
+    }
     render() {
         const p = this.props.data
         const s = this.state.time
@@ -62,6 +66,7 @@ export default class ViewTable extends Component {
             if (localStorage.getItem("token").length>10){
                 _item =<div id='t_item' > 
                             <ul> 
+                                <button onClick={this.add_tody}>اظافة  مواعيد  الاختصاص </button>
                                 <button>تعديل معلومات الاختصاصات</button>
                                 <button onClick={this.de}>حذف معلومات الاختصاصات</button>
                             </ul>
@@ -90,6 +95,7 @@ export default class ViewTable extends Component {
                                             this.clear()
                                             const style = document.getElementById(`s${i._id}`).style
                                             style.color = '#000'
+                                            localStorage.setItem('_id_table',i._id)
                                             style.backgroundColor = '#fff'
                                             if (document.querySelector('.t_item')){
                                                 document.querySelector('.t_item').style.display = "block"
