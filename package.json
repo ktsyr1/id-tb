@@ -2,6 +2,7 @@
   "name": "id_tb",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
