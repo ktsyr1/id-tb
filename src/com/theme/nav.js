@@ -36,7 +36,7 @@ export default class Nav extends Component{
         document.querySelector('.menu').style.display = 'none'
     } 
     render(){
-        let _login ,_name , _add_center 
+        let _login ,_name , _add_center ;
         let date = `${new Date().getHours()}.${new Date().getMinutes()} `
         let end = localStorage.getItem('end_login')  
         if (localStorage.getItem("token")){

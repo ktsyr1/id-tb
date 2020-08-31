@@ -24,10 +24,18 @@ export default class Login extends Component{
         axios.post(url, _data)
             .then(res => {
                 if (res.status===200){ 
+                    
+                    const Dates = new Date()
+                    const Minutes =  Dates.getMinutes()
+                    const Hour =  Dates.getHours()
+                    const day =  Dates.getDay()-1
+                    const Month =  Dates.getMonth()+1
+                    const start = `${Month}/${day} ${Hour}:${Minutes}`
+                    const end = `${Month}/${day} ${Hour +1}:${Minutes}`
                     localStorage.setItem('token', res.data.token);
                     localStorage.setItem('name', res.data.name);
-                    localStorage.setItem('start_login',[`${new Date().getHours()}.${new Date().getMinutes()} `]) 
-                    localStorage.setItem('end_login',[`${new Date().getHours() + 1}.${new Date().getMinutes()} `]) 
+                    localStorage.setItem('start_login',start) 
+                    localStorage.setItem('end_login',end) 
                     window.location.reload('/') 
 
                 }

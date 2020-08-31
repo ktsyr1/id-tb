@@ -54,7 +54,7 @@ export default class ViewWtan extends Component {
             if (localStorage.getItem("token").length>10){
                 _item =<div id='n_item' > 
                             <ul> 
-                                <button>تعديل معلومات الجنسية</button>
+                                {/* <button>تعديل معلومات الجنسية</button> */}
                                 <button onClick={this.de}>حذف معلومات الجنسية</button>
                             </ul>
                         </div> 

@@ -43,6 +43,7 @@ export default class ViewTable extends Component {
                 
                 if (res.status===200){
                     this.setState({d:200})
+                    localStorage.setItem('table_tody_alert',`تم حذف معلومات الاختصاصات ${this.state.purview}`)
                     document.querySelector('#t_item').style.display= "none"
                     document.querySelector(`#s${this.state.i}`).style.display= "none" 
                     this.setState({ document: '', Insurance: '' ,i:''})
@@ -57,10 +58,10 @@ export default class ViewTable extends Component {
         Axios.put(day(_id) , {_id:_id2},config)
             .then(res => {
                 if (res.status===200){
-                    localStorage.setItem('table_tody_alert',`تم حذف معلومات الاختصاصات ${this.state.purview}`)
+                    this.setState({d:200})
                     document.querySelector('#d_item').style.display= "none"
-                    document.querySelector(`#s${this.state.i}`).style.display= "none" 
-                    this.setState({ document: '', Insurance: '' ,i:''})
+                    document.querySelector(`#d_${localStorage.getItem('table_tody_id')}`).style.display= "none" 
+                    this.setState({ document: '', Insurance: '' })
                 }
             })
     }
@@ -82,7 +83,7 @@ export default class ViewTable extends Component {
                 _item =<div id='t_item' > 
                             <ul> 
                                 <button onClick={this.add_tody}>اظافة  مواعيد  الاختصاص </button>
-                                <button>تعديل معلومات الاختصاصات</button>
+                                {/* <button>تعديل معلومات الاختصاصات</button> */}
                                 <button onClick={this.de}>حذف معلومات الاختصاصات</button>
                             </ul>
                         </div> 
@@ -98,7 +99,7 @@ export default class ViewTable extends Component {
             if (localStorage.getItem("token").length>10){
                 _item2 = <div id='d_item' > 
                             <ul> 
-                                <button>تعديل معلومات موعد</button>
+                                {/* <button>تعديل معلومات موعد</button> */}
                                 <button onClick={this.ded}>حذف معلومات الموعد</button>
                             </ul>
                         </div> 
@@ -142,7 +143,7 @@ export default class ViewTable extends Component {
                     </div>
                         <table className='fullw'>
                             <thead>
-                                 <tr id={`s${x.id}`}>
+                                 <tr >
                                     <th>اليوم</th>
                                     <th>الطبيب</th>
                                     <th>من</th>
@@ -155,15 +156,16 @@ export default class ViewTable extends Component {
                                 {s && s.map(g=>{
                                     return(
                                         <Fragment key={g._id}>
-                                            <tr>
+                                            <tr id={`d_${g._id}`}>
                                                 <td>{g.tody}</td>
                                                 <td>{g.doctor}</td>
                                                 <td>{g.start}</td>
                                                 <td>{g.end}</td>
                                                 <td className='ff' onClick={()=> {
                                                     document.querySelector('#d_item').style.display= "block"
-                                                    localStorage.setItem('table_tody_id', g._id)
-                                                    localStorage.setItem('table_tody_alert', ` تم حذف ${x.purview} يوم ${g.tody} الطبيب(${g.doctor}) `)
+                                                    localStorage.setItem('table_tody_id', g._id)      
+                                                    localStorage.setItem('table_tody_alert', ` تم حذف موعد اختصاص ${x.purview} يوم ${g.tody} الطبيب( ${g.doctor} ) `)
+
                                                 }}>{_btn2}</td>
                                             </tr>
                                             {_item2}
