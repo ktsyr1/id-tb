@@ -10,7 +10,7 @@
     flex-flow: wrap
     .__ p 
         width: 90%
-    .n_item ,.t_item 
+    .n_item ,.t_item , .d_item
         width: 40px
         height: 40px
         box-sizing: content-box
@@ -20,9 +20,11 @@
         background-color: #fff
         border-radius: 50%
         .svg
-            height: 30px
+            height: 20px
             width: 30px
             padding: 5px
+    .d_item
+        display: block
 #false.__
     color: $red
     display: none
@@ -163,7 +165,7 @@ th , td
     .__ 
         margin: auto
         width: 90%
-#n_item , #t_item 
+#n_item , #t_item  , #d_item 
     position: absolute
     @extend .sh , .b-r
     padding: 10px

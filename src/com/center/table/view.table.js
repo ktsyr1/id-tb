@@ -3,7 +3,7 @@ import React, { Component,Fragment } from 'react'
 import star from '../../../svg/Icon feather-star.svg'
 import item from '../../../svg/menu_item.svg'
 
-import {table} from '../../../models/config'
+import {table, day} from '../../../models/config'
 import Axios from 'axios'
 import Alert from '../../theme/alert'
 
@@ -29,13 +29,13 @@ export default class ViewTable extends Component {
         })
        
     }
+
     de=(e)=>{
         e.preventDefault(); 
         
         const token = localStorage.getItem('token')
         const config = {headers:{ "x-auth-token" : token} } 
         const _id = this.state.i
-        console.log(_id);
         
         Axios.delete(table(_id),config)
             .then(res => {
@@ -44,6 +44,21 @@ export default class ViewTable extends Component {
                 if (res.status===200){
                     this.setState({d:200})
                     document.querySelector('#t_item').style.display= "none"
+                    document.querySelector(`#s${this.state.i}`).style.display= "none" 
+                    this.setState({ document: '', Insurance: '' ,i:''})
+                }
+            })
+    }
+    ded=(e)=>{
+        const token = localStorage.getItem('token')
+        const config = {headers:{ "x-auth-token" : token} } 
+        const _id = this.state.i
+        const _id2 = localStorage.getItem('table_tody_id')
+        Axios.put(day(_id) , {_id:_id2},config)
+            .then(res => {
+                if (res.status===200){
+                    localStorage.setItem('table_tody_alert',`تم حذف معلومات الاختصاصات ${this.state.purview}`)
+                    document.querySelector('#d_item').style.display= "none"
                     document.querySelector(`#s${this.state.i}`).style.display= "none" 
                     this.setState({ document: '', Insurance: '' ,i:''})
                 }
@@ -59,7 +74,7 @@ export default class ViewTable extends Component {
         let x = this.state 
         let _alert 
         if(x.d === 200 ) {
-            _alert= <Alert data={`تم حذف معلومات الاختصاصات ${x.n}`} />
+            _alert= <Alert data={localStorage.getItem('table_tody_alert')} />
         }
         let _item ,_btn
         if (localStorage.getItem("token")){
@@ -72,6 +87,22 @@ export default class ViewTable extends Component {
                             </ul>
                         </div> 
                 _btn=<button className='t_item' onClick={()=>  document.querySelector('#t_item').style.display= "block"}>
+                        <img className='svg '  src={item} alt={"item"}  /> 
+                    </button>
+            }
+        } 
+        
+        // ---------
+        let _item2 ,_btn2
+        if (localStorage.getItem("token")){
+            if (localStorage.getItem("token").length>10){
+                _item2 = <div id='d_item' > 
+                            <ul> 
+                                <button>تعديل معلومات موعد</button>
+                                <button onClick={this.ded}>حذف معلومات الموعد</button>
+                            </ul>
+                        </div> 
+                _btn2 = <button className='d_item' >
                         <img className='svg '  src={item} alt={"item"}  /> 
                     </button>
             }
@@ -91,7 +122,7 @@ export default class ViewTable extends Component {
                                 <Fragment key={i._id} >
                                     <button className='btn' id={`s${i._id}`}
                                         onClick={() => {
-                                            this.setState({ time: i.time,msg1:"", i:i._id , n : i.purview})
+                                            this.setState({ time: i.time,msg1:"", i:i._id , purview : i.purview})
                                             this.clear()
                                             const style = document.getElementById(`s${i._id}`).style
                                             style.color = '#000'
@@ -111,24 +142,31 @@ export default class ViewTable extends Component {
                     </div>
                         <table className='fullw'>
                             <thead>
-                                 <tr>
+                                 <tr id={`s${x.id}`}>
                                     <th>اليوم</th>
                                     <th>الطبيب</th>
                                     <th>من</th>
                                     <th>الى</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                            <tbody>
                                 <tr><td>{this.state.msg1}</td></tr>
                                 {s && s.map(g=>{
                                     return(
-                                        <Fragment key={g.tody}>
+                                        <Fragment key={g._id}>
                                             <tr>
                                                 <td>{g.tody}</td>
                                                 <td>{g.doctor}</td>
                                                 <td>{g.start}</td>
                                                 <td>{g.end}</td>
+                                                <td className='ff' onClick={()=> {
+                                                    document.querySelector('#d_item').style.display= "block"
+                                                    localStorage.setItem('table_tody_id', g._id)
+                                                    localStorage.setItem('table_tody_alert', ` تم حذف ${x.purview} يوم ${g.tody} الطبيب(${g.doctor}) `)
+                                                }}>{_btn2}</td>
                                             </tr>
+                                            {_item2}
                                         </Fragment>
                                     )
                                 })}

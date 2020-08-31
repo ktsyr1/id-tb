@@ -1,6 +1,6 @@
 import React, { Component} from 'react'  
 import Axios from 'axios'
-// import {table} from '../../../models/config'
+import {table} from '../../../models/config'
 //
 export default class AddTody extends Component { 
     state = {  
@@ -22,19 +22,18 @@ export default class AddTody extends Component {
     add=(e) =>{
         e.preventDefault(); 
         let _id = localStorage.getItem('_id_table') 
-        const url = `http://localhost:5050/api/v1/table/${_id}`
+        const url = table(_id) // `http://localhost:5050/api/v1/table/${_id}`
         const token = localStorage.getItem('token')
         const config = {headers:{ "x-auth-token" : token} } 
          
         const data ={ 
-            time:{
-                tody: this.state.tody,
-                start: this.state.start,
-                end: this.state.end,
-                doctor:  this.state.doctor
-            }
+            tody: this.state.tody,
+            start: this.state.start,
+            end: this.state.end,
+            doctor:  this.state.doctor
         }
-         
+        console.log(data);
+        
         Axios.post( url , data , config ) 
             .then(res => {
                 if (res.status===200){
