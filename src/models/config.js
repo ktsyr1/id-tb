@@ -7,6 +7,9 @@ exports.tables =(x) => `${URL}/api/v1/tables/${x}`
 exports.table =(x) => `${URL}/api/v1/table/${x}`
 exports.day =(x) => `${URL}/api/v1/day/${x}`
 exports.array = `${URL}/api/v1/array/`
+
+exports.reports =  URL+`/api/v1/report/`
+exports.report =(x) =>  `${URL}/api/v1/report/${x}`
 //auth
 exports.login = `${URL}/auth/v1/login`
 exports.signup = `${URL}/auth/v1/signup`

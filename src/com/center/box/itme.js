@@ -18,6 +18,10 @@ export default class Edit extends Component{
         document.querySelector('.add_table').style.display = 'block'  
         document.getElementById('Popup').style.display = 'none'
     }
+    add_report = () => {
+        document.querySelector('.report').style.display='block'
+        document.getElementById('Popup').style.display = 'none'
+    }
     render(){
         let _itme , _deleteview
          if( window.location.pathname.slice(0,8)==="/center/"){ 
@@ -38,7 +42,7 @@ export default class Edit extends Component{
             <div id='Popup' display="true"> 
                 <ul>
                     {_itme}
-                    <li>ابلاغ عن مشكلة</li>
+                    <li onClick={this.add_report}>ابلاغ عن مشكلة</li>
                 </ul>
                 
             </div> 

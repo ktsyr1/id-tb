@@ -97,12 +97,10 @@ export default class ViewTable extends Component {
         let _item2 ,_btn2
         if (localStorage.getItem("token")){
             if (localStorage.getItem("token").length>10){
-                _item2 = <div id='d_item' > 
-                            <ul> 
+                _item2 = <tr id='d_item' > 
                                 {/* <button>تعديل معلومات موعد</button> */}
-                                <button onClick={this.ded}>حذف معلومات الموعد</button>
-                            </ul>
-                        </div> 
+                                <td onClick={this.ded}>حذف معلومات الموعد</td>
+                        </tr> 
                 _btn2 = <button className='d_item' >
                         <img className='svg '  src={item} alt={"item"}  /> 
                     </button>

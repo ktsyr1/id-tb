@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import Back from '../../svg/Back.svg'
 import item from '../../svg/menu_item.svg'
 import './nav.sass'
+import AddReport from '../center/report/Add.report'
 export default class Navbar extends Component{ 
     
     open_Popup=() => { 
@@ -23,12 +24,16 @@ export default class Navbar extends Component{
         //     }
         // }
         return(
-            <nav className='navbar '>
-               <div onClick={()=>window.history.back()}>
-                   <img className='svg' src={Back} alt={"Back"}/>
-               </div>
-               <img className='svg' style={{width: "5px"}} src={item} alt={"item"} onClick={()=>document.getElementById('Popup').style.display = 'flex'} /> 
-            </nav>
+            <>
+                <nav className='navbar '>
+                <div onClick={()=>window.history.back()}>
+                    <img className='svg' src={Back} alt={"Back"}/>
+                </div>
+                <img className='svg' style={{width: "5px"}} src={item} alt={"item"} onClick={()=>document.getElementById('Popup').style.display = 'flex'} /> 
+                </nav>
+                <AddReport />
+            </>
+            
         )
     }
 }
