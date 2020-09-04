@@ -11,7 +11,7 @@ export default class AddReport extends Component {
     x_add=(e)=>{ 
         e.preventDefault(); 
         document.querySelector('#Popup').style.display = 'none' 
-         document.querySelector('.add_table').style.display = 'none' 
+         document.querySelector('.report').style.display = 'none' 
     }
     add=(e) =>{
         e.preventDefault(); 
@@ -34,7 +34,7 @@ export default class AddReport extends Component {
     } 
     render(){ 
         return (
-            <div className='add_table report'>
+            <div className=' report'>
                 <form className='forms   '  >
                     <p>ابلاغ عن مشكلة</p>
                     <label>

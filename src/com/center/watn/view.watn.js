@@ -42,6 +42,10 @@ export default class ViewWtan extends Component {
             document.querySelector(`#s${this.state.i}`).style.display= "none" 
             this.setState({ document: '', Insurance: '' ,i:''})
     }
+    _btn=()=>{
+        document.querySelector('#n_item').style.display= "block"
+        document.querySelector('._X').style.display= "block"
+    }
     itmes = ()=>  document.querySelector('#n_item').style.display= "block"
     render() {
         let x = this.state 
@@ -58,7 +62,7 @@ export default class ViewWtan extends Component {
                                 <button onClick={this.de}>حذف معلومات الجنسية</button>
                             </ul>
                         </div> 
-                _btn=<button className='n_item' onClick={()=>  document.querySelector('#n_item').style.display= "block"}>
+                _btn=<button className='n_item' onClick={this._btn}>
                         <img className='svg '  src={item} alt={"item"}  /> 
                     </button>
             }

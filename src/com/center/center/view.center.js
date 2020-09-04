@@ -28,12 +28,21 @@ export default class View_center extends Component {
             .then(res => this.setState({ center: res.data }))
         axios.get(tables(this.props.match.params.id))
                 .then(res => this.setState({ tables: res.data }))
-    } 
-
+    }
+     
+    _close(){
+        document.querySelector('._X').style.display = 'none'
+        document.querySelector('#Popup').style.display = 'none'
+        if(document.querySelector('#n_item')) document.querySelector('#n_item').style.display = 'none'
+        if(document.querySelector('#t_item')) document.querySelector('#t_item').style.display = 'none'
+        if(document.querySelector('#d_item')) document.querySelector('#d_item').style.display = 'none'
+    }
     render() {
         const x = this.state.center 
         return (
             <div className='view' onClick={this.text} >
+                <div className='_X' onClick={this._close}>  </div>
+                
                     <Navbar />
                     <Edit data={this.props.match.params.id}/>
                     <EditCenter center={this.state.center}/>

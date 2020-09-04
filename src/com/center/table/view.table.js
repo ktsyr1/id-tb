@@ -69,6 +69,11 @@ export default class ViewTable extends Component {
         document.querySelector('.add_tody').style.display='block'
         document.querySelector('#t_item').style.display='none'
     }
+    _b=()=>  {
+        document.querySelector('#t_item').style.display= "block"
+        document.querySelector('._X').style.display= "block"
+    
+}
     render() {
         const p = this.props.data
         const s = this.state.time
@@ -87,7 +92,7 @@ export default class ViewTable extends Component {
                                 <button onClick={this.de}>حذف معلومات الاختصاصات</button>
                             </ul>
                         </div> 
-                _btn=<button className='t_item' onClick={()=>  document.querySelector('#t_item').style.display= "block"}>
+                _btn=<button className='t_item' onClick={this._b}>
                         <img className='svg '  src={item} alt={"item"}  /> 
                     </button>
             }
@@ -102,8 +107,8 @@ export default class ViewTable extends Component {
                                 <td onClick={this.ded}>حذف معلومات الموعد</td>
                         </tr> 
                 _btn2 = <button className='d_item' >
-                        <img className='svg '  src={item} alt={"item"}  /> 
-                    </button>
+                            <img className='svg '  src={item} alt={"item"}  /> 
+                        </button>
             }
         } 
         return (
@@ -161,6 +166,7 @@ export default class ViewTable extends Component {
                                                 <td>{g.end}</td>
                                                 <td className='ff' onClick={()=> {
                                                     document.querySelector('#d_item').style.display= "block"
+                                                    document.querySelector('._X').style.display= "block"
                                                     localStorage.setItem('table_tody_id', g._id)      
                                                     localStorage.setItem('table_tody_alert', ` تم حذف موعد اختصاص ${x.purview} يوم ${g.tody} الطبيب( ${g.doctor} ) `)
 

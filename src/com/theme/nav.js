@@ -23,6 +23,7 @@ export default class Nav extends Component{
     
     menu_open(){
         document.querySelector('.menu').style.display = 'block'
+        document.querySelector('._X').style.display = 'block'
         console.log(this.state);
 
         if (localStorage.getItem('token')){
@@ -34,6 +35,7 @@ export default class Nav extends Component{
     }
     menu_close(){
         document.querySelector('.menu').style.display = 'none'
+        document.querySelector('._X').style.display = 'none'
     } 
     render(){
         let _login ,_name , _add_center ;
@@ -70,6 +72,7 @@ export default class Nav extends Component{
         } 
         return(
             <nav className='nav'>
+                <div className='_X' onClick={this.menu_close}>  </div>
                 <div className='menu' >
                     <div className='__'>
                         <img className='svg' src={menu} alt={"menu"}  onClick={this.menu_close} /> 
