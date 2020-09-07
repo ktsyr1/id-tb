@@ -38,15 +38,17 @@ export default class Nav extends Component{
         document.querySelector('._X').style.display = 'none'
     } 
     render(){
-        let _login ,_name , _add_center ,_reports;
-        let date = `${new Date().getHours()}.${new Date().getMinutes()} `
+        let _login ,_name , _add_center ,_reports ,_time_info;
+        let date =  Date.parse( new Date())
+        let end_string = new Date(Number(localStorage.getItem('end_login'))).toString()
+
         let end = localStorage.getItem('end_login')  
         if (localStorage.getItem("token")){
             if (localStorage.getItem("token").length>10){
                 _name = <p className='p_'>{localStorage.getItem('name')}</p>
                 _add_center = <Itme url={'/add-center'} icon={hospital} name={' اظافة المراكز الطبية'} />
                 _reports = <Itme url={'/reports'} icon={help} name={'reports'} />
-                       
+                _time_info = <p className='box p_'>تنتهي الجلسة في ( {end_string})</p>                       
             }else{
             _name = <img className='svg' src={logo} alt={"logo"}/>
            }  
@@ -54,22 +56,24 @@ export default class Nav extends Component{
             _name = <img className='svg' src={logo} alt={"logo"}/>
         }
         _login = <Itme url={'/auth'} icon={login} name={'تسجيل دخول'} />  
-        if (end){
-            if (end < 24){
+        if ( Date.parse( new Date()) >= end){
+            
+        }
+        if (end){ 
                 if (end > date){
-                        _login = 
-                            < div className='a' onClick ={()=>{
-                                localStorage.removeItem('name')
-                                localStorage.removeItem('token')
-                                localStorage.removeItem('start_login')  
-                                localStorage.removeItem('end_login')  
-                                window.location.reload(false)
-                                }}>
-                                <img className='svg' src={logout_icon} alt={logout_icon} />
-                                <p>تسجيل خروج</p>
-                            </div>
+                    _login = 
+                        < div className='a' onClick ={()=>{
+                            localStorage.removeItem('name')
+                            localStorage.removeItem('token')
+                            localStorage.removeItem('start_login')  
+                            localStorage.removeItem('end_login')  
+                            window.location.reload(false)
+                            }}>
+                            <img className='svg' src={logout_icon} alt={logout_icon} />
+                            <p>تسجيل خروج</p>
+                        </div>
                 }
-            }
+            
         } 
         return(
             <nav className='nav'>
@@ -77,7 +81,6 @@ export default class Nav extends Component{
                 <div className='menu' >
                     <div className='__'>
                         <img className='svg' src={menu} alt={"menu"}  onClick={this.menu_close} /> 
-                        <p className='box'>تنتهي الجلسة في ( {localStorage.getItem('end_login')})</p>
                     </div>
                     
                     <div>
@@ -89,6 +92,7 @@ export default class Nav extends Component{
                         
                         <Itme url={'/about'} icon={help} name={'حول التطبيق'} />
                         {_login}
+                        {_time_info}
                           
                     </div>
                 </div>

@@ -11,10 +11,10 @@ export default class Login extends Component{
     }
      
     text = () => console.log(this.state)
-    signup = () => {
-        document.getElementById('signup_box').style.display = 'block'
-        document.getElementById('login_box').style.display = 'none'
-    }
+    // signup = () => {
+    //     document.getElementById('signup_box').style.display = 'block'
+    //     document.getElementById('login_box').style.display = 'none'
+    // }
     login (e) {
         e.preventDefault();
         const _data = { mail:this.state.mail,
@@ -24,20 +24,14 @@ export default class Login extends Component{
         axios.post(url, _data)
             .then(res => {
                 if (res.status===200){ 
-                    
-                    const Dates = new Date()
-                    const Minutes =  Dates.getMinutes()
-                    const Hour =  Dates.getHours()
-                    const day =  Dates.getDay()-1
-                    const Month =  Dates.getMonth()+1
-                    const start = `${Month}/${day} ${Hour}:${Minutes}`
-                    const end = `${Month}/${day} ${Hour +1}:${Minutes}`
+                     
+                    const start =  Date.parse( new Date())
+                    const end = new Date().setHours(new Date().getHours()+1)
                     localStorage.setItem('token', res.data.token);
                     localStorage.setItem('name', res.data.name);
                     localStorage.setItem('start_login',start) 
                     localStorage.setItem('end_login',end) 
-                    window.location.reload('/') 
-
+                    window.location.reload('/')
                 }
             })  
         } 
@@ -63,7 +57,7 @@ export default class Login extends Component{
                     </div>
                 </label>
                     <input id="submit"  type="submit" onClick={this.login &&  this.login}  value=" بتسجيل الدخول "/>
-                <p>اذا لم يكن لديك حساب قم <span onClick={this.signup} > بتسجيل  </span></p> 
+                {/* <p>اذا لم يكن لديك حساب قم <span onClick={this.signup} > بتسجيل  </span></p>  */}
             </form>
         )
     }

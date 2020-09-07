@@ -13,6 +13,12 @@ export default class Navbar extends Component{
     } 
       
     render(){
+        if ( Date.parse( new Date()) >= localStorage.getItem('end_login')){
+            localStorage.removeItem('name')
+            localStorage.removeItem('token')
+            localStorage.removeItem('start_login')  
+            localStorage.removeItem('end_login')   
+        }
         return(
             <header>
                 <nav className='navbar '>

@@ -8,7 +8,7 @@ export default class About extends Component{
             <>
             <Navbar />
             <Edit />
-            <div className=' '> 
+            <div className='page'> 
                <div className='box '> 
                 <b>من نحن</b>
                 <p>
