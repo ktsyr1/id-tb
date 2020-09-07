@@ -20,27 +20,29 @@ export default class Index extends Component {
         return (
             <div> 
                 <Nav />
-                {this.state.data && this.state.data.map(x =>
-                    <div key={x._id} className='card' >
-                        <Link to={`/center/${x._id}`}  >
-                            <div className='title'>
-                                <h3>{x.name}</h3>
-                            </div>
-                            <div className='footer'>
-                                <div className='city __'>
-                                    <img className='svg' src={map_pin} alt={"map_pin"}/>
-                                    <p>{x.address.city}</p>
- 
+                <div className='cards'>
+                    {this.state.data && this.state.data.map(x =>
+                        <div key={x._id} className='card' >
+                            <Link to={`/center/${x._id}`}  >
+                                <div className='title'>
+                                    <h3>{x.name}</h3>
                                 </div>
-                                <div className='__' id={x.special_needs.toString()}>
-                                    <img className='svg' src={accessible_icon} alt={"accessible_icon"}/>
-                                    <p>ذوي الاحتياجات الخاصة</p>
+                                <div className='footer'>
+                                    <div className='city __'>
+                                        <img className='svg' src={map_pin} alt={"map_pin"}/>
+                                        <p>{x.address.city}</p>
+    
+                                    </div>
+                                    <div className='__' id={x.special_needs.toString()}>
+                                        <img className='svg' src={accessible_icon} alt={"accessible_icon"}/>
+                                        <p>ذوي الاحتياجات الخاصة</p>
 
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
-                    </div>
-                )}
+                            </Link>
+                        </div>
+                    )}
+                </div>
             </div>
         )
     }

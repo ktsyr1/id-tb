@@ -71,8 +71,7 @@ th , td
     margin: 5px auto
     color: $bule
     font-size: 12px
-    direction: rtl
-    width: 85%
+    direction: rtl 
     padding: 5px
     @extend .sh , .b-r
     .title
@@ -142,9 +141,6 @@ th , td
                 position: absolute
                 padding: 0 10px
 
-@media screen and ( min-width: 426px )
-    .card
-        width: 538px
 #open_edit
     position: fixed
     top: 85%
@@ -169,9 +165,9 @@ th , td
     position: absolute
     @extend .sh , .b-r
     padding: 10px
-    left: 0
     display: none
-    margin: 10px
+    width: 200px
+    margin: 0 200px
     background-color: $white
     ul 
         padding: 0
@@ -199,3 +195,44 @@ textarea
     border-color: #2680eb
     border-radius: 10px
     height: 100px
+
+// @media app
+    
+$phone : 425px
+$tablet : 640px
+$laptop : 1024px
+$desktop : 1440px
+@media screen and ( max-width: $phone )
+    .menu
+        display: none
+    .page 
+        width: 100%
+        margin: 0 auto
+    .card
+        width: 85%
+@media screen and ( max-width: $tablet )
+    .cards
+        display: flex
+        margin: 0 auto
+        flex-flow: wrap
+        width: 100%
+    .card
+        width: 85%
+
+@media screen and ( min-width: $tablet )  
+    .menu
+        display: none
+    .page , .forms  
+        width: 480px
+        margin: 0 auto
+    .cards
+        display: flex
+        margin: 0 auto
+        flex-flow: wrap
+        width: 640px
+        .card
+            width: 300px
+
+@media screen and ( min-width: $laptop )  
+    .menu
+        display: block

@@ -14,8 +14,7 @@ export default class Navbar extends Component{
       
     render(){
         return(
-            <>
-
+            <header>
                 <nav className='navbar '>
                     <div onClick={()=>window.history.back()}>
                         <img className='svg' src={Back} alt={"Back"}/>
@@ -23,7 +22,7 @@ export default class Navbar extends Component{
                     <img className='svg' style={{width: "5px"}} src={item} alt={"item"} onClick={this.open_Popup} /> 
                 </nav>
                 <AddReport />
-            </>
+            </header>
             
         )
     }

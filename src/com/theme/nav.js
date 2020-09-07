@@ -5,8 +5,8 @@ import search from '../../svg/Icon awesome-search.svg'
 import logo from '../../svg/logo.svg'
 import home from '../../svg/Icon awesome-home.svg'
 import hospital from '../../svg/Icon awesome-hospital.svg'
-import hospital2 from '../../svg/Icon awesome-hospital-alt.svg'
-import call from '../../svg/Icon feather-phone-call.svg'
+// import hospital2 from '../../svg/Icon awesome-hospital-alt.svg'
+// import call from '../../svg/Icon feather-phone-call.svg'
 import help from '../../svg/Icon feather-help-circle.svg'
 import login from '../../svg/Icon feather-log-in.svg'
 import logout_icon from '../../svg/Icon feather-log-out.svg'
@@ -38,13 +38,14 @@ export default class Nav extends Component{
         document.querySelector('._X').style.display = 'none'
     } 
     render(){
-        let _login ,_name , _add_center ;
+        let _login ,_name , _add_center ,_reports;
         let date = `${new Date().getHours()}.${new Date().getMinutes()} `
         let end = localStorage.getItem('end_login')  
         if (localStorage.getItem("token")){
             if (localStorage.getItem("token").length>10){
                 _name = <p className='p_'>{localStorage.getItem('name')}</p>
-                 _add_center = <Itme url={'/add-center'} icon={hospital} name={' اظافة المراكز الطبية'} />
+                _add_center = <Itme url={'/add-center'} icon={hospital} name={' اظافة المراكز الطبية'} />
+                _reports = <Itme url={'/reports'} icon={help} name={'reports'} />
                        
             }else{
             _name = <img className='svg' src={logo} alt={"logo"}/>
@@ -82,9 +83,10 @@ export default class Nav extends Component{
                     <div>
                         <Itme url={'#'} icon={home} name={'الرئيسية'} />
                         {_add_center}
-                        <Itme url={'#'} icon={hospital2} name={'المشافي'} />
-                        <Itme url={'#'} icon={call} name={'الارقام الضرورية'} />
-                        <Itme url={'/reports'} icon={help} name={'reports'} />
+                        {_reports}
+                        {/* <Itme url={'#'} icon={hospital2} name={'المشافي'} /> */}
+                        {/* <Itme url={'#'} icon={call} name={'الارقام الضرورية'} /> */}
+                        
                         <Itme url={'/about'} icon={help} name={'حول التطبيق'} />
                         {_login}
                           
