@@ -29,11 +29,14 @@ export default class View_center extends Component {
             .then(res => {
                 this.setState({ center: res.data})
                 if (res.status===200) this.setState({_data:true})
-                console.log(res.status)
+                console.log(res)
             })
-            .catch( )
+            .catch(err=>console.log(err))
         axios.get(tables(this.props.match.params.id))
-            .then(res => this.setState({ tables: res.data }))
+            .then(res => {
+                this.setState({ tables: res.data })
+                if (res.status===200) this.setState({_dataT:true})
+            })
     }
      
     _close(){
@@ -45,7 +48,7 @@ export default class View_center extends Component {
     }
     render() {
         let x = this.state.center , _body
-        if (this.state._data===true){
+        if (this.state._data===true&&this.state._dataT===true){
             _body= <>
                     <div>
                         <Edit data={this.props.match.params.id}/>
@@ -96,10 +99,9 @@ export default class View_center extends Component {
                     </div>
                 </>
         }else{
-             setInterval(myTimer, 1000);
-            function myTimer() {
-            _body=<Errors/>
-            } 
+            setTimeout(()=> {
+                _body=<Errors/>
+            } , 5000);
         } 
         return (
             <div className='view' onClick={this.text} >
