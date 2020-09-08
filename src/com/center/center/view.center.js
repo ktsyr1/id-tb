@@ -18,6 +18,7 @@ import EditCenter from './Edit.center'
 import AddWatn from '../watn/Add.watn'
 import AddTable from '../table/Add.table'
 import AddTody from '../table/Add_tody.table'
+import Errors from '../../theme/error'
 
 //
 export default class View_center extends Component {
@@ -25,9 +26,14 @@ export default class View_center extends Component {
     componentDidMount() {
         
         axios.get(center(this.props.match.params.id))
-            .then(res => this.setState({ center: res.data }))
+            .then(res => {
+                this.setState({ center: res.data})
+                if (res.status===200) this.setState({_data:true})
+                console.log(res.status)
+            })
+            .catch( )
         axios.get(tables(this.props.match.params.id))
-                .then(res => this.setState({ tables: res.data }))
+            .then(res => this.setState({ tables: res.data }))
     }
      
     _close(){
@@ -38,20 +44,16 @@ export default class View_center extends Component {
         if(document.querySelector('#d_item')) document.querySelector('#d_item').style.display = 'none'
     }
     render() {
-        const x = this.state.center 
-        return (
-            <div className='view' onClick={this.text} >
-                <div className='_X' onClick={this._close}>  </div>
-                    
-                    <Navbar />
+        let x = this.state.center , _body
+        if (this.state._data===true){
+            _body= <>
                     <div>
                         <Edit data={this.props.match.params.id}/>
                         <EditCenter center={this.state.center}/>
                         <AddWatn />
                         <AddTable />
                         <AddTody />
-                    </div>
-                    
+                    </div> 
                     <div className='page'>
                         <div className='box '>
                             <p className='itr'>{x &&x.name}</p>
@@ -92,6 +94,19 @@ export default class View_center extends Component {
                             <Iframe url= {x && x.address && x.address.map} className="b-r" />
                         </div>
                     </div>
+                </>
+        }else{
+             setInterval(myTimer, 1000);
+            function myTimer() {
+            _body=<Errors/>
+            } 
+        } 
+        return (
+            <div className='view' onClick={this.text} >
+                <div className='_X' onClick={this._close}>  </div>
+
+                    <Navbar />
+                    {_body}
 
             </div>
         )
