@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="ar">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Web site created using create-react-app" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>دليل المراكز الطبية</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div> 
-   <script type="text/html" src="/scripts/install.js"></script>
-    <script type="text/JavaScript">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <title>دليل المراكز الطبية</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script type="text/html" src="/scripts/install.js"></script>
+  <script type="text/JavaScript">
       if('serviceWorker' in navigator) {
         navigator.serviceWorker
           .register('/serviceWorker.js')
@@ -26,6 +28,52 @@
           .then((reg) => {  });
          });
       }
-    </script> 
-  </body>
+      let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  // Update UI notify the user they can install the PWA
+  showInstallPromotion();
+});
+buttonInstall.addEventListener('click', (e) => {
+  // Hide the app provided install promotion
+  hideMyInstallPromotion();
+  // Show the install prompt
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
+  deferredPrompt.userChoice.then((choiceResult) => {
+    if (choiceResult.outcome === 'accepted') {
+      console.log('User accepted the install prompt');
+    } else {
+      console.log('User dismissed the install prompt');
+    }
+  });
+});
+window.addEventListener('DOMContentLoaded', () => {
+  let displayMode = 'browser tab';
+  if (navigator.standalone) {
+    displayMode = 'standalone-ios';
+  }
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    displayMode = 'standalone';
+  }
+  // Log launch display mode to analytics
+  console.log('DISPLAY_MODE_LAUNCH:', displayMode);
+});
+window.addEventListener('DOMContentLoaded', () => {
+  window.matchMedia('(display-mode: standalone)').addListener((evt) => {
+    let displayMode = 'browser tab';
+    if (evt.matches) {
+      displayMode = 'standalone';
+    }
+    // Log display mode change to analytics
+    console.log('DISPLAY_MODE_CHANGED', displayMode);
+  });
+});
+    </script>
+</body>
+
 </html>

@@ -41,3 +41,8 @@
     transform: rotate(360deg);
   }
 }
+@media all and (display-mode: standalone) {
+  body {
+    background-color: yellow;
+  }
+}
